@@ -1,0 +1,3810 @@
+fileFormatVersion: 2
+guid: 1d308336a8a48064fb815ed7f55cbbab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1437684677359888664
+    second: NicknameInputField_0
+  - first:
+      213: 7229254942360978989
+    second: NicknameInputField_1
+  - first:
+      213: -8405539664514593553
+    second: NicknameInputField_2
+  - first:
+      213: 4175383047326810830
+    second: NicknameInputField_3
+  - first:
+      213: -9133704171201728189
+    second: NicknameInputField_4
+  - first:
+      213: 2515394036177695819
+    second: NicknameInputField_5
+  - first:
+      213: -373480895453181644
+    second: NicknameInputField_6
+  - first:
+      213: 1309347738265165281
+    second: NicknameInputField_7
+  - first:
+      213: -6823168294732236317
+    second: NicknameInputField_8
+  - first:
+      213: -1521272760583527954
+    second: NicknameInputField_9
+  - first:
+      213: 6144581465022807801
+    second: NicknameInputField_10
+  - first:
+      213: 6280868632915378290
+    second: NicknameInputField_11
+  - first:
+      213: 4995441967870809965
+    second: NicknameInputField_12
+  - first:
+      213: 6904979026337509837
+    second: NicknameInputField_13
+  - first:
+      213: -3822027724756421146
+    second: NicknameInputField_14
+  - first:
+      213: 2758244154663017351
+    second: NicknameInputField_15
+  - first:
+      213: 263572812783895965
+    second: NicknameInputField_16
+  - first:
+      213: 3754241219349562170
+    second: NicknameInputField_17
+  - first:
+      213: 6623197798025172694
+    second: NicknameInputField_18
+  - first:
+      213: -2895571547026223133
+    second: NicknameInputField_19
+  - first:
+      213: 7120220512548629844
+    second: NicknameInputField_20
+  - first:
+      213: 3656691141181977229
+    second: NicknameInputField_21
+  - first:
+      213: -9045279799421226880
+    second: NicknameInputField_22
+  - first:
+      213: 7871884417595646116
+    second: NicknameInputField_23
+  - first:
+      213: -7410531969688501489
+    second: NicknameInputField_24
+  - first:
+      213: 6782215686380907336
+    second: NicknameInputField_25
+  - first:
+      213: -4282254674027981727
+    second: NicknameInputField_26
+  - first:
+      213: 540285665480275495
+    second: NicknameInputField_27
+  - first:
+      213: 1474371437494255266
+    second: NicknameInputField_28
+  - first:
+      213: 7194885948523644269
+    second: NicknameInputField_29
+  - first:
+      213: 2335094881884107076
+    second: NicknameInputField_30
+  - first:
+      213: -6597523230310372250
+    second: NicknameInputField_31
+  - first:
+      213: -226550672640874336
+    second: NicknameInputField_32
+  - first:
+      213: -901476955311831712
+    second: NicknameInputField_33
+  - first:
+      213: 316742835243171745
+    second: NicknameInputField_34
+  - first:
+      213: 2345012592142470502
+    second: NicknameInputField_35
+  - first:
+      213: -7254065541928771869
+    second: NicknameInputField_36
+  - first:
+      213: 1112772778948358711
+    second: NicknameInputField_37
+  - first:
+      213: -6220183254573320418
+    second: NicknameInputField_38
+  - first:
+      213: -8663901452379255434
+    second: NicknameInputField_39
+  - first:
+      213: -2511733934542150547
+    second: NicknameInputField_40
+  - first:
+      213: 1441491087193161228
+    second: NicknameInputField_41
+  - first:
+      213: -1646063227180511991
+    second: NicknameInputField_42
+  - first:
+      213: -2411142520489070094
+    second: NicknameInputField_43
+  - first:
+      213: 1808428176143409825
+    second: NicknameInputField_44
+  - first:
+      213: -6768574450208729768
+    second: NicknameInputField_45
+  - first:
+      213: -5279113074445967164
+    second: NicknameInputField_46
+  - first:
+      213: 7724909072424053458
+    second: NicknameInputField_47
+  - first:
+      213: -75838270397010099
+    second: NicknameInputField_48
+  - first:
+      213: -5988939561284103445
+    second: NicknameInputField_49
+  - first:
+      213: 2171676392138720814
+    second: NicknameInputField_50
+  - first:
+      213: 8161499267706971059
+    second: NicknameInputField_51
+  - first:
+      213: -1089925152227652842
+    second: NicknameInputField_52
+  - first:
+      213: 7853689296772658440
+    second: NicknameInputField_53
+  - first:
+      213: -6217672965048057206
+    second: NicknameInputField_54
+  - first:
+      213: -711836666075698521
+    second: NicknameInputField_55
+  - first:
+      213: -2453314152927979422
+    second: NicknameInputField_56
+  - first:
+      213: 937641232933204493
+    second: NicknameInputField_57
+  - first:
+      213: 390057994867869750
+    second: NicknameInputField_58
+  - first:
+      213: 8501615569518380168
+    second: NicknameInputField_59
+  - first:
+      213: 8625991145401047191
+    second: NicknameInputField_60
+  - first:
+      213: 2395061505186534682
+    second: NicknameInputField_61
+  - first:
+      213: 1262543542316519043
+    second: NicknameInputField_62
+  - first:
+      213: -5892442654742230930
+    second: NicknameInputField_63
+  - first:
+      213: -3935640499186878823
+    second: NicknameInputField_64
+  - first:
+      213: 6871439608718860152
+    second: NicknameInputField_65
+  - first:
+      213: 6161102547252638538
+    second: NicknameInputField_66
+  - first:
+      213: 2633484134815073392
+    second: NicknameInputField_67
+  - first:
+      213: 7082491314040253770
+    second: NicknameInputField_68
+  - first:
+      213: 6935273743462580473
+    second: NicknameInputField_69
+  - first:
+      213: 2479723273616510707
+    second: NicknameInputField_70
+  - first:
+      213: -6698962037598717498
+    second: NicknameInputField_71
+  - first:
+      213: 675965229539346471
+    second: NicknameInputField_72
+  - first:
+      213: 1516734831176871667
+    second: NicknameInputField_73
+  - first:
+      213: -1848492333378254796
+    second: NicknameInputField_74
+  - first:
+      213: -2874336455972185192
+    second: NicknameInputField_75
+  - first:
+      213: 8975326136187287453
+    second: NicknameInputField_76
+  - first:
+      213: 8843962864996197849
+    second: NicknameInputField_77
+  - first:
+      213: 8631883051060431613
+    second: NicknameInputField_78
+  - first:
+      213: 3961019329831378629
+    second: NicknameInputField_79
+  - first:
+      213: -1448401394336350221
+    second: NicknameInputField_80
+  - first:
+      213: 1054456002608831063
+    second: NicknameInputField_81
+  - first:
+      213: 2219790623377117272
+    second: NicknameInputField_82
+  - first:
+      213: 1633101155589234518
+    second: NicknameInputField_83
+  - first:
+      213: 7102636911817948412
+    second: NicknameInputField_84
+  - first:
+      213: 6005916037809101318
+    second: NicknameInputField_85
+  - first:
+      213: -8933276828524055043
+    second: NicknameInputField_86
+  - first:
+      213: -1406109976967925879
+    second: NicknameInputField_87
+  - first:
+      213: 1118962247861485833
+    second: NicknameInputField_88
+  - first:
+      213: -1344961825556657446
+    second: NicknameInputField_89
+  - first:
+      213: 7674735158828023400
+    second: NicknameInputField_90
+  - first:
+      213: -6529825938193864990
+    second: NicknameInputField_91
+  - first:
+      213: 7642798102545655262
+    second: NicknameInputField_92
+  - first:
+      213: -1021156358031169666
+    second: NicknameInputField_93
+  - first:
+      213: -1575232378747595806
+    second: NicknameInputField_94
+  - first:
+      213: -4060582851782582499
+    second: NicknameInputField_95
+  - first:
+      213: -2948248599944809808
+    second: NicknameInputField_96
+  - first:
+      213: 7621385516331969856
+    second: NicknameInputField_97
+  - first:
+      213: -7486186671395884705
+    second: NicknameInputField_98
+  - first:
+      213: -1696614702532635762
+    second: NicknameInputField_99
+  - first:
+      213: -6387945395148842919
+    second: NicknameInputField_100
+  - first:
+      213: -3948613403710747479
+    second: NicknameInputField_101
+  - first:
+      213: 8327093209748114178
+    second: NicknameInputField_102
+  - first:
+      213: 5668004306407066993
+    second: NicknameInputField_103
+  - first:
+      213: 2160699289637478230
+    second: NicknameInputField_104
+  - first:
+      213: -3625702648167699681
+    second: NicknameInputField_105
+  - first:
+      213: 7387141825103571717
+    second: NicknameInputField_106
+  - first:
+      213: -2736602701225484142
+    second: NicknameInputField_107
+  - first:
+      213: 1651151738316992983
+    second: NicknameInputField_108
+  - first:
+      213: 5550800162908555961
+    second: NicknameInputField_109
+  - first:
+      213: -4380642318084166177
+    second: NicknameInputField_110
+  - first:
+      213: 4168234951952103446
+    second: NicknameInputField_111
+  - first:
+      213: -1610475256149412759
+    second: NicknameInputField_112
+  - first:
+      213: 2975318053309626037
+    second: NicknameInputField_113
+  - first:
+      213: 5017064385645348525
+    second: NicknameInputField_114
+  - first:
+      213: -8562131535458881514
+    second: NicknameInputField_115
+  - first:
+      213: 4300877174962920304
+    second: NicknameInputField_116
+  - first:
+      213: -4969481662891837888
+    second: NicknameInputField_117
+  - first:
+      213: 2154768559668834551
+    second: NicknameInputField_118
+  - first:
+      213: 7886058995692930989
+    second: NicknameInputField_119
+  - first:
+      213: -7571765043637395748
+    second: NicknameInputField_120
+  - first:
+      213: 3886331966300825904
+    second: NicknameInputField_121
+  - first:
+      213: -5006204484564827310
+    second: NicknameInputField_122
+  - first:
+      213: 8992540688947179365
+    second: NicknameInputField_123
+  - first:
+      213: 880405642179397421
+    second: NicknameInputField_124
+  - first:
+      213: -3662105168396713838
+    second: NicknameInputField_125
+  - first:
+      213: 4057866532853820885
+    second: NicknameInputField_126
+  - first:
+      213: -6190805724185703087
+    second: NicknameInputField_127
+  - first:
+      213: -514207333663577850
+    second: NicknameInputField_128
+  - first:
+      213: 1446522740771418616
+    second: NicknameInputField_129
+  - first:
+      213: 2458353889778320167
+    second: NicknameInputField_130
+  - first:
+      213: 4092114632133206520
+    second: NicknameInputField_131
+  - first:
+      213: -6200514851137108513
+    second: NicknameInputField_132
+  - first:
+      213: 2675185136143543748
+    second: NicknameInputField_133
+  - first:
+      213: 5697110809084368098
+    second: NicknameInputField_134
+  - first:
+      213: 5167756789478830224
+    second: NicknameInputField_135
+  - first:
+      213: -6769052475393778928
+    second: NicknameInputField_136
+  - first:
+      213: 7361918700103115212
+    second: NicknameInputField_137
+  - first:
+      213: -299923193813042774
+    second: NicknameInputField_138
+  - first:
+      213: 7799752080619681188
+    second: NicknameInputField_139
+  - first:
+      213: 903068153769854394
+    second: NicknameInputField_140
+  - first:
+      213: 8753737947151934744
+    second: NicknameInputField_141
+  - first:
+      213: -7582556706173288935
+    second: NicknameInputField_142
+  - first:
+      213: 8683128961925974919
+    second: NicknameInputField_143
+  - first:
+      213: 7034886286279436372
+    second: NicknameInputField_144
+  - first:
+      213: 1858402118859657608
+    second: NicknameInputField_145
+  - first:
+      213: -6046388653537389357
+    second: NicknameInputField_146
+  - first:
+      213: 2076743261950894376
+    second: NicknameInputField_147
+  - first:
+      213: 1335106095105023131
+    second: NicknameInputField_148
+  - first:
+      213: 3389355164812382846
+    second: NicknameInputField_149
+  - first:
+      213: -7989495730449287365
+    second: NicknameInputField_150
+  - first:
+      213: -7522645137273269895
+    second: NicknameInputField_151
+  - first:
+      213: -5382679699470007322
+    second: NicknameInputField_152
+  - first:
+      213: -6208767446564381826
+    second: NicknameInputField_153
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NicknameInputField_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 89
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e611f237615c0ce0800000000000000
+      internalID: -1437684677359888664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 0
+        width: 1445
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26c92e5119735460800000000000000
+      internalID: 7229254942360978989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_2
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1019
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fecc627a536895b80800000000000000
+      internalID: -8405539664514593553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_3
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1010
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec24a1962c0f1f930800000000000000
+      internalID: 4175383047326810830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_4
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1000
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3417400e2709e3180800000000000000
+      internalID: -9133704171201728189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_5
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1003
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44f18c7c8978e220800000000000000
+      internalID: 2515394036177695819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_6
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 983
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4394e18ba1121daf0800000000000000
+      internalID: -373480895453181644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_7
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 991
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed91caa4dcbb2210800000000000000
+      internalID: 1309347738265165281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_8
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 978
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e9f6cd269c3f41a0800000000000000
+      internalID: -6823168294732236317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_9
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 981
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee1e0fafb7a53eae0800000000000000
+      internalID: -1521272760583527954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_10
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 947
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe322c7940f54550800000000000000
+      internalID: 6144581465022807801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_11
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 905
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27080d18eb02a2750800000000000000
+      internalID: 6280868632915378290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_12
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 898
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d679407b000635540800000000000000
+      internalID: 4995441967870809965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_13
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 864
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1be5e17d963df50800000000000000
+      internalID: 6904979026337509837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_14
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 871
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e5f238c80e65fac0800000000000000
+      internalID: -3822027724756421146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_15
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 867
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b9c72e170474620800000000000000
+      internalID: 2758244154663017351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_16
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 858
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d954f66a31668a300800000000000000
+      internalID: 263572812783895965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_17
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 855
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33c5788f7eb91430800000000000000
+      internalID: 3754241219349562170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 838
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d6907c5e435aeb50800000000000000
+      internalID: 6623197798025172694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_19
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 846
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef06c5f40dd0d7d0800000000000000
+      internalID: -2895571547026223133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_20
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 830
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d29e4e4da10d260800000000000000
+      internalID: 7120220512548629844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_21
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 832
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82387b083d2fb230800000000000000
+      internalID: 3656691141181977229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_22
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 824
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0803b7542f5b87280800000000000000
+      internalID: -9045279799421226880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_23
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 827
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0a8b7bb2d8e3d60800000000000000
+      internalID: 7871884417595646116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_24
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 818
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f038a0eaf60882990800000000000000
+      internalID: -7410531969688501489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_25
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 815
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84be0d8ab354f1e50800000000000000
+      internalID: 6782215686380907336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_26
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 798
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1645ec4ff006294c0800000000000000
+      internalID: -4282254674027981727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_27
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 800
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 726ff2043fa7f7700800000000000000
+      internalID: 540285665480275495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_28
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 750
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aeb3d6c205067410800000000000000
+      internalID: 1474371437494255266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_29
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 726
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65833966ae59d360800000000000000
+      internalID: 7194885948523644269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_30
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 707
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 441f8875c6ce76020800000000000000
+      internalID: 2335094881884107076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_31
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 683
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66c66f3c393e074a0800000000000000
+      internalID: -6597523230310372250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_32
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 677
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a86d911d512bdcf0800000000000000
+      internalID: -226550672640874336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_33
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 662
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06500714c7f4d73f0800000000000000
+      internalID: -901476955311831712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_34
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 670
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1afb1d33eeb456400800000000000000
+      internalID: 316742835243171745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_35
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 654
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d487437882b8020800000000000000
+      internalID: 2345012592142470502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_36
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 646
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee1fe3c2d1645b90800000000000000
+      internalID: -7254065541928771869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 638
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732f0fc52fc517f00800000000000000
+      internalID: 1112772778948358711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_38
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 612
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17f25139487da9a0800000000000000
+      internalID: -6220183254573320418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_39
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 600
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d81f94883a3c780800000000000000
+      internalID: -8663901452379255434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_40
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 582
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6422555b47842dd0800000000000000
+      internalID: -2511733934542150547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_41
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 573
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e3a07a184310410800000000000000
+      internalID: 1441491087193161228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_42
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 566
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90d821257320829e0800000000000000
+      internalID: -1646063227180511991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 550
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1b86307a6e98ed0800000000000000
+      internalID: -2411142520489070094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_44
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 556
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a2e5d048d3d81910800000000000000
+      internalID: 1808428176143409825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_45
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 542
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855168326613112a0800000000000000
+      internalID: -6768574450208729768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_46
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 533
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c02784f0a2dcb6b0800000000000000
+      internalID: -5279113074445967164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_47
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 512
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da27008fd3643b60800000000000000
+      internalID: 7724909072424053458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_48
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 524
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f2b90be7192fef0800000000000000
+      internalID: -75838270397010099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_49
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 478
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be29064233303eca0800000000000000
+      internalID: -5988939561284103445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_50
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 501
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e26c7803c28532e10800000000000000
+      internalID: 2171676392138720814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_51
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 467
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3e84ea758734170800000000000000
+      internalID: 8161499267706971059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_52
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 461
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61b05b549decfd0f0800000000000000
+      internalID: -1089925152227652842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_53
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 382
+        width: 11
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805fb660ec8edfc60800000000000000
+      internalID: 7853689296772658440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_54
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 438
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82c2c4816366b9a0800000000000000
+      internalID: -6217672965048057206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_55
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 425
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aaa57cd25c0f16f0800000000000000
+      internalID: -711836666075698521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_56
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 409
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2681a40b6c314fdd0800000000000000
+      internalID: -2453314152927979422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_57
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 408
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d023eb7cbbb230d00800000000000000
+      internalID: 937641232933204493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_58
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 416
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63886e10ea3c96500800000000000000
+      internalID: 390057994867869750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_59
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 357
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 884c216215ecbf570800000000000000
+      internalID: 8501615569518380168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_60
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 374
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7985b498e3da5b770800000000000000
+      internalID: 8625991145401047191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_61
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 347
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a151bd7dfb7fc3120800000000000000
+      internalID: 2395061505186534682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_62
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 361
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e4d3999a4758110800000000000000
+      internalID: 1262543542316519043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_63
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 354
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68cab000a6d93ea0800000000000000
+      internalID: -5892442654742230930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_64
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 334
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996335261dbc169c0800000000000000
+      internalID: -3935640499186878823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_65
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 329
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f9c3deae14c5f50800000000000000
+      internalID: 6871439608718860152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_66
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 325
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a437fb1bf12a08550800000000000000
+      internalID: 6161102547252638538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_67
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 323
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07487492ed30c8420800000000000000
+      internalID: 2633484134815073392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_68
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 315
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4da82253501a4260800000000000000
+      internalID: 7082491314040253770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_69
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 305
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f04e2b99ba0f3060800000000000000
+      internalID: 6935273743462580473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_70
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 323
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe4e21ed2fb96220800000000000000
+      internalID: 2479723273616510707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_71
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 325
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c9f919f4818803a0800000000000000
+      internalID: -6698962037598717498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_72
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 323
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728453b7bc2816900800000000000000
+      internalID: 675965229539346471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_73
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 321
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe62cefa468c0510800000000000000
+      internalID: 1516734831176871667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_74
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 320
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438c4fa3406d856e0800000000000000
+      internalID: -1848492333378254796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_75
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 312
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b92d0e83e4c18d0800000000000000
+      internalID: -2874336455972185192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_76
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 320
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d97f8ba4193ce8c70800000000000000
+      internalID: 8975326136187287453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_77
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 317
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d528de4e511cba70800000000000000
+      internalID: 8843962864996197849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_78
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 322
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfa0c29b6eb9ac770800000000000000
+      internalID: 8631883051060431613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_79
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 319
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce1e07181e58f630800000000000000
+      internalID: 3961019329831378629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_80
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 300
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffb6661b9e36ebe0800000000000000
+      internalID: -1448401394336350221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_81
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 312
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a17cac52e22ae00800000000000000
+      internalID: 1054456002608831063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_82
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 312
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 850d22e9fc74ece10800000000000000
+      internalID: 2219790623377117272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_83
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 311
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f1d2539d0f9a610800000000000000
+      internalID: 1633101155589234518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_84
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 314
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc7c71d3a2a19260800000000000000
+      internalID: 7102636911817948412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_85
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 296
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ade60d0dc495350800000000000000
+      internalID: 6005916037809101318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_86
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 304
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df578931e00a60480800000000000000
+      internalID: -8933276828524055043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_87
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 295
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98fa1b30d6e7c7ce0800000000000000
+      internalID: -1406109976967925879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_88
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 291
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9014bd46c3a578f00800000000000000
+      internalID: 1118962247861485833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_89
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 286
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ada0c37785cb55de0800000000000000
+      internalID: -1344961825556657446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_90
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 288
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e3527e6f2228a60800000000000000
+      internalID: 7674735158828023400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_91
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 287
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6a2dcd7e56165a0800000000000000
+      internalID: -6529825938193864990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_92
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 272
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed56348816ca01a60800000000000000
+      internalID: 7642798102545655262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_93
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 278
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77ab63e3bf14d1f0800000000000000
+      internalID: -1021156358031169666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_94
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 272
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e35e0a5f76a32ae0800000000000000
+      internalID: -1575232378747595806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_95
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 271
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1fd4720969e5a7c0800000000000000
+      internalID: -4060582851782582499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_96
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 262
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b23fb2d487b517d0800000000000000
+      internalID: -2948248599944809808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_97
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 254
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d264d4fb994c960800000000000000
+      internalID: 7621385516331969856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_98
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 256
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f513f29c2e8bb1890800000000000000
+      internalID: -7486186671395884705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_99
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 261
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8356d6cae96478e0800000000000000
+      internalID: -1696614702532635762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_100
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 258
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9589f8502857957a0800000000000000
+      internalID: -6387945395148842919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_101
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 251
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac897ca705b339c0800000000000000
+      internalID: -3948613403710747479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_102
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 237
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b8a9ac727cf8370800000000000000
+      internalID: 8327093209748114178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_103
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 232
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d07c4e2ebc8ae40800000000000000
+      internalID: 5668004306407066993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_104
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 240
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65fd7495e885cfd10800000000000000
+      internalID: 2160699289637478230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_105
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 237
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b65cab6aaeeadc0800000000000000
+      internalID: -3625702648167699681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_106
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 222
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50baab6e956648660800000000000000
+      internalID: 7387141825103571717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_107
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 224
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290a416a752a50ad0800000000000000
+      internalID: -2736602701225484142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_108
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 231
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d137a002c11ae610800000000000000
+      internalID: 1651151738316992983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_109
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 233
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba4859b657680d40800000000000000
+      internalID: 5550800162908555961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_110
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 226
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fddac867505d433c0800000000000000
+      internalID: -4380642318084166177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_111
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 223
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618f873ca9b88d930800000000000000
+      internalID: 4168234951952103446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_112
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 206
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96478a5894176a9e0800000000000000
+      internalID: -1610475256149412759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_113
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 200
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b6b35d61047a4920800000000000000
+      internalID: 2975318053309626037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_114
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 208
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da687a92a7130a540800000000000000
+      internalID: 5017064385645348525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_115
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 192
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 610bdcc8bb23d2980800000000000000
+      internalID: -8562131535458881514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_116
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 195
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07b104ce009cfab30800000000000000
+      internalID: 4300877174962920304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_117
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 192
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 046b38dc1cad80bb0800000000000000
+      internalID: -4969481662891837888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_118
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 184
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0bd3ca69647ed10800000000000000
+      internalID: 2154768559668834551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_119
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 174
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da70d0cdfd8e07d60800000000000000
+      internalID: 7886058995692930989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_120
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 186
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cded54b4fcfabe690800000000000000
+      internalID: -7571765043637395748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_121
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 166
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0392b9a25560fe530800000000000000
+      internalID: 3886331966300825904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_122
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 168
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253cb889b83668ab0800000000000000
+      internalID: -5006204484564827310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_123
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 163
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f61f0bc1cebcc70800000000000000
+      internalID: 8992540688947179365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_124
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 149
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d274a585444d73c00800000000000000
+      internalID: 880405642179397421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_125
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 152
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290879380c69d2dc0800000000000000
+      internalID: -3662105168396713838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_126
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 152
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dda2b4bc10705830800000000000000
+      internalID: 4057866532853820885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_127
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 146
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15dc4708ef6d51aa0800000000000000
+      internalID: -6190805724185703087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_128
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 134
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 609e418872b2dd8f0800000000000000
+      internalID: -514207333663577850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_129
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 136
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f1743bc4c4131410800000000000000
+      internalID: 1446522740771418616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_130
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 130
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 723cf6c76d3dd1220800000000000000
+      internalID: 2458353889778320167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_131
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 139
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f16a74b39c1ac830800000000000000
+      internalID: 4092114632133206520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_132
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 126
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd54079389853f9a0800000000000000
+      internalID: -6200514851137108513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_133
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 99
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cdad3425ba202520800000000000000
+      internalID: 2675185136143543748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_134
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 106
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e41385a814301f40800000000000000
+      internalID: 5697110809084368098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_135
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 94
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 090bf7a8b6f87b740800000000000000
+      internalID: 5167756789478830224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_136
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 96
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01bdc2a33ae7f02a0800000000000000
+      internalID: -6769052475393778928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_137
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 96
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1a3f87d0aca2660800000000000000
+      internalID: 7361918700103115212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_138
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 95
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa97fdcb17576dbf0800000000000000
+      internalID: -299923193813042774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_139
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 88
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a5337541394e3c60800000000000000
+      internalID: 7799752080619681188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_140
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 90
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab58b6183b7588c00800000000000000
+      internalID: 903068153769854394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_141
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 78
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81529dc98468b7970800000000000000
+      internalID: 8753737947151934744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_142
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 81
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91ef84f89d855c690800000000000000
+      internalID: -7582556706173288935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_143
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 55
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b018229cba08870800000000000000
+      internalID: 8683128961925974919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_144
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 67
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458e3f01ecfe0a160800000000000000
+      internalID: 7034886286279436372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_145
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 59
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881967081ee5ac910800000000000000
+      internalID: 1858402118859657608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_146
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 40
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d493f30e89e61ca0800000000000000
+      internalID: -6046388653537389357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_147
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 45
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821e4426ef212dc10800000000000000
+      internalID: 2076743261950894376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_148
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 51
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9c91387bef378210800000000000000
+      internalID: 1335106095105023131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_149
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 43
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7217489098690f20800000000000000
+      internalID: 3389355164812382846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_150
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 35
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37f11c96fb9f1190800000000000000
+      internalID: -7989495730449287365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_151
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 29
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 971d185ba123a9790800000000000000
+      internalID: -7522645137273269895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_152
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 35
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e3426df451ec45b0800000000000000
+      internalID: -5382679699470007322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NicknameInputField_153
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 19
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b558e17e606d9a0800000000000000
+      internalID: -6208767446564381826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
