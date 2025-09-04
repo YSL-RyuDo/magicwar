@@ -1306,7 +1306,57 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SwitchButton_0: 2496085092982832230
+      SwitchButton_1: 7489714654204004270
+      SwitchButton_10: 7091064742090373738
+      SwitchButton_11: -775641257602925455
+      SwitchButton_12: 4855453224532847072
+      SwitchButton_13: 6933053954755369121
+      SwitchButton_14: -5049586629793363892
+      SwitchButton_15: 1114665777631232615
+      SwitchButton_16: -3695835121583602158
+      SwitchButton_17: 4818845233243355631
+      SwitchButton_18: -7103587585531626499
+      SwitchButton_19: 9125895185089283903
+      SwitchButton_2: 6026507646610373032
+      SwitchButton_20: 4904304473654856067
+      SwitchButton_21: -2982765050641958907
+      SwitchButton_22: 570010187095018333
+      SwitchButton_23: -137498692333678081
+      SwitchButton_24: 1146823007296874118
+      SwitchButton_25: -1245483594975674204
+      SwitchButton_26: -4561691032276912035
+      SwitchButton_27: 106915045963471135
+      SwitchButton_28: 6372357696510661015
+      SwitchButton_29: 3671337865539740703
+      SwitchButton_3: -5464744476543190848
+      SwitchButton_30: -7734389835868690243
+      SwitchButton_31: 5744501018440669662
+      SwitchButton_32: 5345944346102859380
+      SwitchButton_33: 1271366556293353247
+      SwitchButton_34: -1880437415018499507
+      SwitchButton_35: 8266362750666378236
+      SwitchButton_36: 3305757116174524919
+      SwitchButton_37: -655468303374869472
+      SwitchButton_38: 1568935096884977874
+      SwitchButton_39: -3499028189123850733
+      SwitchButton_4: -8511777832638385697
+      SwitchButton_40: 6697699996045533352
+      SwitchButton_41: -4890504322412274847
+      SwitchButton_42: -4187215690863282812
+      SwitchButton_43: -47756089149102621
+      SwitchButton_44: -6961354668563938624
+      SwitchButton_45: 7623427323472645409
+      SwitchButton_46: -1049740579053646955
+      SwitchButton_47: 7005342219336968061
+      SwitchButton_48: 8562460173124577582
+      SwitchButton_49: 2141439485437526943
+      SwitchButton_5: -4385312469853019020
+      SwitchButton_6: -5344008329874565676
+      SwitchButton_7: -1406449091958566467
+      SwitchButton_8: -4304065164805229568
+      SwitchButton_9: -798452306960245277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

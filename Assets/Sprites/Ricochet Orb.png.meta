@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ricochet Orb_0: -2884849627004866171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      loginBackgroundImage_0: -7379707830451790793
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

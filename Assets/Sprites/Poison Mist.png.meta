@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Poison Mist_0: -5151557894998527945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -154,7 +154,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MagicWarLogo_0: 8467027282749062212
+      MagicWarLogo_1: -3501173564757404064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
