@@ -7,6 +7,9 @@ using System.Collections.Concurrent;
 
 public class NetworkConnector : MonoBehaviour
 {
+    private static NetworkConnector instance;
+    public static NetworkConnector Instance => instance;
+
     private TcpClient client;
     private NetworkStream stream;
     private Thread recvThread;
@@ -22,7 +25,20 @@ public class NetworkConnector : MonoBehaviour
 
     public bool IsConnected => client != null && client.Connected;
 
+    private void Awake()
+    {
+        // 싱글톤 + DontDestroyOnLoad
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject); // 중복 방지
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start() => Connect(serverIP, serverPort);
+
     private void Update()
     {
         while (mainThreadActions.TryDequeue(out var action))
@@ -67,6 +83,16 @@ public class NetworkConnector : MonoBehaviour
                     {
                         Dispatcher.Dispatch(type, msg);
                     });
+                }
+                else if (len == 0)
+                {
+                    // 서버가 정상적으로 끊었을 때
+                    mainThreadActions.Enqueue(() =>
+                    {
+                        Debug.LogWarning("[Network] Server closed connection");
+                        Disconnect();
+                    });
+                    break;
                 }
             }
             catch (Exception e)

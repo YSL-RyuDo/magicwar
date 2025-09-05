@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // 씬 이동에 필요
 
 public class LoginUIManager : MonoBehaviour
 {
@@ -51,7 +52,18 @@ public class LoginUIManager : MonoBehaviour
             SetMessage(display);
         else
             SetMessage($"Unknown server response ({type}): {msg}");
+
+        // 로그인 성공 시 로비 씬으로 이동
+        if (type == PacketType.LoginSuccess)
+        {
+            // 유저 ID를 PlayerPrefs에 저장해두면 로비에서 사용할 수 있음
+            PlayerPrefs.SetString("UserID", idInputField.text.Trim());
+            PlayerPrefs.Save();
+
+            SceneManager.LoadScene("LobbyScene");
+        }
     }
+
     private void OnClickEnter()
     {
         string id = idInputField.text.Trim();
