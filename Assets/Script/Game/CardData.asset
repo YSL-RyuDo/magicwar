@@ -17,47 +17,83 @@ MonoBehaviour:
     cardName: Fireball
     cardImage: {fileID: -8262534425414574923, guid: 6447676e1cccfaa44950127eb1c319a7, type: 3}
     description: Fireball
+    playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+    enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+    applySlow: 0
   - ID: 1
     cardName: Iceball
     cardImage: {fileID: 4317225593958605249, guid: 52e587786caadf6488e27235ef327551, type: 3}
     description: Iceball
+    playerPrefab: {fileID: 2568609391009725525, guid: 6c02c3b6b13dd4740ae4da34c4e5e82c, type: 3}
+    enemyPrefab: {fileID: 2568609391009725525, guid: 6c02c3b6b13dd4740ae4da34c4e5e82c, type: 3}
+    applySlow: 1
   - ID: 2
     cardName: Lightning Bolt
     cardImage: {fileID: -6278663978556736651, guid: 97a1461a21d71724da4326b12f09ec8c, type: 3}
     description: LightningBolt
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 3
     cardName: Ice Field
     cardImage: {fileID: -8646796131227450236, guid: 525e041fa9995644c805b38505d2d4a0, type: 3}
     description: IceField
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 4
     cardName: Poison Mist
     cardImage: {fileID: -5151557894998527945, guid: 45f0b9b7cdeac244a8dbaeea08f99315, type: 3}
     description: PoisonMist
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 5
     cardName: MeteorStrike
     cardImage: {fileID: -4888399323542012093, guid: dfc216dc55f788f4e8f46acc6cbe6799, type: 3}
     description: MeteorStrike
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 6
     cardName: Ricochet Orb
     cardImage: {fileID: -2884849627004866171, guid: 26cb8423af1fce345ae73bdc1de0e05a, type: 3}
     description: Ricochet Orb
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 7
     cardName: Invisibility
     cardImage: {fileID: 1479212587552436098, guid: 2deb7b496e849164b8710f73a92a7ca8, type: 3}
     description: Invisibility
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 8
     cardName: Heal
     cardImage: {fileID: 4595319061610181371, guid: 6de311518475ced49aa0651a2df12baf, type: 3}
     description: Heal
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 9
     cardName: Magic Barrier
     cardImage: {fileID: -7910127128901405170, guid: e206a9e589859d6428fe4faef2515dba, type: 3}
     description: Magic Barrier
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 10
     cardName: Blink
     cardImage: {fileID: -9092828279365600596, guid: 3c6efdcf3f2cd3540bcbc843e04a0b79, type: 3}
     description: Blink
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0
   - ID: 11
     cardName: Magic Wall
     cardImage: {fileID: -5356574185940491189, guid: ba5e355c5dd7eec4cb5afe1b9a363754, type: 3}
     description: Magic Wall
+    playerPrefab: {fileID: 0}
+    enemyPrefab: {fileID: 0}
+    applySlow: 0

@@ -17,6 +17,7 @@ public class LobbySystem : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button settingButton;
+    [SerializeField] private Button startButton;
 
     private NetworkConnector network;
 
@@ -26,9 +27,9 @@ public class LobbySystem : MonoBehaviour
 
         if (network != null && network.IsConnected)
         {
-            string currentUserId = PlayerPrefs.GetString("UserID", "guest");
+            string currentUserId = SessionData.UserID;
 
-            Debug.Log("[Lobby] 서버에 프로필 요청 패킷 전송");
+            Debug.Log($"[Lobby] 서버에 프로필 요청 패킷 전송 (UserID={currentUserId})");
             network.SendPacket(PacketType.RequestProfile, currentUserId);
             network.Dispatcher.Register(PacketType.ResponseProfile, OnProfileReceived);
         }
@@ -39,6 +40,9 @@ public class LobbySystem : MonoBehaviour
 
         if (settingButton != null)
             settingButton.onClick.AddListener(OnClickSettingButton);
+
+        if ((startButton != null))
+            startButton.onClick.AddListener(OnClickStartButton);
     }
 
     private void OnProfileReceived(string msg)
@@ -78,5 +82,17 @@ public class LobbySystem : MonoBehaviour
     {
         Debug.Log("[Lobby] 세팅 버튼 클릭됨 → Setting 씬 로드");
         SceneManager.LoadScene("SettingScene");
+    }
+
+    public void OnClickStartButton()
+    {
+        Debug.Log("[Lobby] 시작 버튼 클릭됨 → 매칭 요청 & 로딩 씬 로드");
+
+        string currentUserId = SessionData.UserID;
+        Debug.Log("[Lobby] 시작 버튼 클릭됨 → currentUserId=" + currentUserId);
+        network.SendPacket(PacketType.RequestMatching, currentUserId);
+
+        // 로딩씬으로 이동
+        SceneManager.LoadScene("LoadingScene");
     }
 }

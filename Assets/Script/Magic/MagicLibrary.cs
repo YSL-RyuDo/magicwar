@@ -4,10 +4,10 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Magic/Magic Library")]
 public class MagicLibrary : ScriptableObject
 {
-    public List<MagicData> magics;
+    public List<CardData> magics;
 
-    public MagicData GetMagic(string name)
+    public CardData GetMagic(string name)
     {
-        return magics.Find(m => m.magicName == name);
+        return magics.Find(m => m.cardName == name);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Iceball : MonoBehaviour, IMagicProjectile
 {
     public string shooterTag { get; set; }
-
+    public string shooterId { get; set; }
     private int damage;
     private float slowDuration;
     private float slowFactor;

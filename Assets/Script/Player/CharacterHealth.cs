@@ -94,6 +94,13 @@ public class CharacterHealth : MonoBehaviour
             animator.SetTrigger("die");
 
         onDeath?.Invoke();
+
+        // 서버에 사망 패킷 전송
+        if (NetworkConnector.Instance != null)
+        {
+            string userId = SessionData.UserID;
+            NetworkConnector.Instance.SendPacket(PacketType.Die, userId);
+        }
     }
 
     public void SetMaxHealth(int newMaxHealth)

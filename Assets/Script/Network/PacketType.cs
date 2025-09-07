@@ -21,5 +21,21 @@ public enum PacketType
     ResponseSetUserMagic = 13,
 
     RequestReplaceUserMagic = 14,
-    ResponseReplaceUserMagic = 15
+    ResponseReplaceUserMagic = 15,
+
+    RequestMatching = 16,
+    ResponseMatching = 17,
+    CancelMatch = 18,
+
+    RequestMagicCooldowns = 19,
+    ResponseUserMagicCooldowns =20,
+    Move = 21,
+    CastMagic = 22,
+    SpawnMagic = 23,
+    UpdateMagic = 24,
+    Hit = 25,
+    DamageResult = 26,
+    Die = 27,
+    Defeat = 28,
+    Victory = 29,
 }

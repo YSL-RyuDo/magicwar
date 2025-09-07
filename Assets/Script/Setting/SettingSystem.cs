@@ -39,7 +39,7 @@ public class SettingSystem : MonoBehaviour
         if (network != null && network.IsConnected)
         {
             Debug.Log("[Setting] 서버에 유저 마법 슬롯 요청");
-            string currentUserId = PlayerPrefs.GetString("UserID", "guest");
+            string currentUserId = SessionData.UserID;
             network.SendPacket(PacketType.RequestUserMagic, currentUserId);
 
             // 서버 응답 이벤트 등록
@@ -255,12 +255,12 @@ public class SettingSystem : MonoBehaviour
         }
 
         // 유저 ID 가져오기
-        string userId = PlayerPrefs.GetString("UserID", "guest");
+        string currentUserId = SessionData.UserID;
 
         Debug.Log($"[Setting] 슬롯 {slotIndex} 교체 요청 → 기존:{oldCardId}, 새:{pendingCardId}");
 
         // 서버에 패킷 전송 (UserID, 기존카드ID, 새카드ID)
-        string payload = $"{userId},{oldCardId},{pendingCardId}";
+        string payload = $"{currentUserId},{oldCardId},{pendingCardId}";
         network.SendPacket(PacketType.RequestReplaceUserMagic, payload);
 
         // 클라이언트 UI 즉시 반영 (서버 응답으로 최종 확인 가능)

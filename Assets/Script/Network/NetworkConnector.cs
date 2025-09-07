@@ -5,6 +5,14 @@ using System.Text;
 using System.Threading;
 using System.Collections.Concurrent;
 
+public static class SessionData
+{
+    public static string UserID;
+    public static string Nickname;
+    public static string RoomID;
+    public static string OpponentID;
+}
+
 public class NetworkConnector : MonoBehaviour
 {
     private static NetworkConnector instance;
@@ -35,6 +43,7 @@ public class NetworkConnector : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+        Application.runInBackground = true;
     }
 
     private void Start() => Connect(serverIP, serverPort);
