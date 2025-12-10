@@ -24,7 +24,9 @@ public class NetworkConnector : MonoBehaviour
     private bool isRunning;
 
     public string serverIP = "127.0.0.1";
-    public int serverPort = 7777;
+    public int serverPort = 9000;
+
+    public event Action OnConnected;
 
     private readonly ConcurrentQueue<Action> mainThreadActions = new();
     public PacketDispatcher Dispatcher { get; } = new PacketDispatcher();
@@ -67,6 +69,11 @@ public class NetworkConnector : MonoBehaviour
             recvThread.Start();
 
             Debug.Log($"[Network] Connected {ip}:{port}");
+
+            mainThreadActions.Enqueue(() =>
+            {
+                OnConnected?.Invoke();
+            });
         }
         catch (Exception e)
         {

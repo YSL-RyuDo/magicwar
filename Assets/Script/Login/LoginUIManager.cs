@@ -37,6 +37,11 @@ public class LoginUIManager : MonoBehaviour
 
         if (network != null)
         {
+            network.OnConnected += () =>
+            {
+                SetMessage("Server connected successfully.");
+            };
+
             network.Dispatcher.Register(PacketType.SignupSuccess, msg => OnServerResponse(PacketType.SignupSuccess, msg));
             network.Dispatcher.Register(PacketType.SignupIDError, msg => OnServerResponse(PacketType.SignupIDError, msg));
             network.Dispatcher.Register(PacketType.SignupNickError, msg => OnServerResponse(PacketType.SignupNickError, msg));
@@ -48,20 +53,52 @@ public class LoginUIManager : MonoBehaviour
 
     private void OnServerResponse(PacketType type, string msg)
     {
-        if (messages.TryGetValue(type, out string display))
-            SetMessage(display);
-        else
-            SetMessage($"Unknown server response ({type}): {msg}");
-
-        // 로그인 성공 시 로비 씬으로 이동
-        if (type == PacketType.LoginSuccess)
+        switch (type)
         {
-            SessionData.UserID = idInputField.text.Trim();
-            SessionData.Nickname = msg;
+            // ============================
+            // Signup 결과
+            // ============================
+            case PacketType.SignupSuccess:
+                SetMessage("Signup successful.");
+                break;
 
-            SceneManager.LoadScene("LobbyScene");
+            case PacketType.SignupNickError:
+                SetMessage("Signup failed: Nickname already exists.");
+                break;
+
+            case PacketType.SignupIDError:
+                SetMessage("Signup failed: ID already exists.");
+                break;
+
+            // ============================
+            // Login 결과
+            // ============================
+            case PacketType.LoginSuccess:
+                SetMessage("Login successful.");
+
+                SessionData.UserID = idInputField.text.Trim();
+                SessionData.Nickname = msg;   // 서버가 보낸 닉네임
+
+                SceneManager.LoadScene("LobbyScene");
+                break;
+
+            case PacketType.LoginIDError:
+                SetMessage("Login failed: ID not found.");
+                break;
+
+            case PacketType.LoginPWError:
+                SetMessage("Login failed: Wrong password.");
+                break;
+
+            // ============================
+            // 그 외 패킷
+            // ============================
+            default:
+                SetMessage($"Unknown server packet ({type}): {msg}");
+                break;
         }
     }
+
 
     private void OnClickEnter()
     {
