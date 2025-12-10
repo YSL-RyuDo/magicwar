@@ -1,60 +1,50 @@
 using UnityEngine;
 using System;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Collections.Concurrent;
-
-public static class SessionData
-{
-    public static string UserID;
-    public static string Nickname;
-    public static string RoomID;
-    public static string OpponentID;
-}
+using System.Runtime.InteropServices;
 
 public class NetworkConnector : MonoBehaviour
 {
-    private static NetworkConnector instance;
-    public static NetworkConnector Instance => instance;
-
     private TcpClient client;
     private NetworkStream stream;
     private Thread recvThread;
-    private bool isRunning;
+    private bool running;
 
-    public string serverIP = "127.0.0.1";
-    public int serverPort = 9000;
-
-    public event Action OnConnected;
-
-    private readonly ConcurrentQueue<Action> mainThreadActions = new();
     public PacketDispatcher Dispatcher { get; } = new PacketDispatcher();
 
-    private const int BufferSize = 4096;
+    const int BufferSize = 4096;
+
+    private readonly ConcurrentQueue<Action> mainThreadQueue = new();
 
     public bool IsConnected => client != null && client.Connected;
 
+    public static NetworkConnector Instance { get; private set; }
+
     private void Awake()
     {
-        // 싱글톤 + DontDestroyOnLoad
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // 중복 방지
+            Destroy(gameObject);
             return;
         }
-        instance = this;
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
-        Application.runInBackground = true;
     }
 
-    private void Start() => Connect(serverIP, serverPort);
+    private void Start()
+    {
+        Connect("127.0.0.1", 9000);
+    }
 
     private void Update()
     {
-        while (mainThreadActions.TryDequeue(out var action))
-            action?.Invoke();
+        while (mainThreadQueue.TryDequeue(out var action))
+            action();
     }
+
 
     public void Connect(string ip, int port)
     {
@@ -62,102 +52,125 @@ public class NetworkConnector : MonoBehaviour
         {
             client = new TcpClient();
             client.Connect(ip, port);
-            stream = client.GetStream();
-            isRunning = true;
 
-            recvThread = new Thread(ReceiveLoop) { IsBackground = true };
+            stream = client.GetStream();
+            running = true;
+
+            recvThread = new Thread(ReceiveLoop);
+            recvThread.IsBackground = true;
             recvThread.Start();
 
-            Debug.Log($"[Network] Connected {ip}:{port}");
-
-            mainThreadActions.Enqueue(() =>
-            {
-                OnConnected?.Invoke();
-            });
+            Debug.Log("Connected to server.");
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Debug.LogError($"[Network] Connect failed: {e.Message}");
+            Debug.LogError($"Connect error: {ex.Message}");
         }
     }
 
+    // ------------------------------
+    //  바이너리 패킷 송신
+    // ------------------------------
+    public void SendRaw(byte[] packet)
+    {
+        if (!IsConnected)
+            return;
+
+        try
+        {
+            stream.Write(packet, 0, packet.Length);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Send error: {ex.Message}");
+        }
+    }
+
+    public void SendPacket(PacketType type, string message)
+    {
+        if (!IsConnected)
+        {
+            Debug.LogWarning("[Network] 연결되지 않아 패킷을 보낼 수 없습니다.");
+            return;
+        }
+
+        byte[] body = System.Text.Encoding.UTF8.GetBytes(message);
+        ushort bodySize = (ushort)body.Length;
+
+        // 서버가 요구하는 구조 = ID(2) + SIZE(2) + BODY
+        byte[] packet = new byte[4 + bodySize];
+
+        // [0~1] packetId
+        Buffer.BlockCopy(BitConverter.GetBytes((ushort)type), 0, packet, 0, 2);
+
+        // [2~3] bodySize
+        Buffer.BlockCopy(BitConverter.GetBytes(bodySize), 0, packet, 2, 2);
+
+        // [4~] body
+        Buffer.BlockCopy(body, 0, packet, 4, bodySize);
+
+        stream.Write(packet, 0, packet.Length);
+        stream.Flush();
+
+        Debug.Log($"[Network] SendPacket → ID={type}, Body=\"{message}\"");
+    }
+
+
+
+    // ------------------------------
+    //  바이너리 패킷 수신
+    // ------------------------------
     private void ReceiveLoop()
     {
-        var buffer = new byte[BufferSize];
-        while (isRunning)
+        byte[] buffer = new byte[BufferSize];
+
+        while (running)
         {
             try
             {
-                int len = stream.Read(buffer, 0, buffer.Length);
-                if (len > 4)
-                {
-                    int packetId = BitConverter.ToInt32(buffer, 0);
-                    var type = (PacketType)packetId;
-                    string msg = Encoding.UTF8.GetString(buffer, 4, len - 4);
+                int recv = stream.Read(buffer, 0, buffer.Length);
 
-                    mainThreadActions.Enqueue(() =>
-                    {
-                        Dispatcher.Dispatch(type, msg);
-                    });
-                }
-                else if (len == 0)
+                if (recv < 4)      // 최소 헤더(4바이트)보다 작음 → 오류 또는 연결 종료
+                    continue;
+
+                ushort packetId = BitConverter.ToUInt16(buffer, 0);
+                ushort bodySize = BitConverter.ToUInt16(buffer, 2);
+
+                if (recv < 4 + bodySize)
+                    continue;
+
+                byte[] body = new byte[bodySize];
+                Array.Copy(buffer, 4, body, 0, bodySize);
+
+                mainThreadQueue.Enqueue(() =>
                 {
-                    // 서버가 정상적으로 끊었을 때
-                    mainThreadActions.Enqueue(() =>
-                    {
-                        Debug.LogWarning("[Network] Server closed connection");
-                        Disconnect();
-                    });
-                    break;
-                }
-            }
-            catch (Exception e)
-            {
-                mainThreadActions.Enqueue(() =>
-                {
-                    Debug.LogError($"[Network] Receive error: {e.Message}");
-                    Disconnect();
+                    Dispatcher.Dispatch((PacketType)packetId, body);
                 });
+            }
+            catch
+            {
+                running = false;
+                Debug.LogWarning("Server disconnected.");
                 break;
             }
         }
     }
 
-    public void SendPacket(PacketType type, string msg)
+    public static T ByteArrayToStructure<T>(byte[] data, int startIndex) where T : struct
     {
-        if (!IsConnected) return;
-        try
-        {
-            byte[] idBytes = BitConverter.GetBytes((int)type);
-            byte[] bodyBytes = Encoding.UTF8.GetBytes(msg);
+        int size = Marshal.SizeOf<T>();
+        IntPtr ptr = Marshal.AllocHGlobal(size);
 
-            byte[] sendData = new byte[idBytes.Length + bodyBytes.Length];
-            Buffer.BlockCopy(idBytes, 0, sendData, 0, idBytes.Length);
-            Buffer.BlockCopy(bodyBytes, 0, sendData, idBytes.Length, bodyBytes.Length);
+        Marshal.Copy(data, startIndex, ptr, size);
+        T value = Marshal.PtrToStructure<T>(ptr);
 
-            stream.Write(sendData, 0, sendData.Length);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"[Network] Send failed: {e.Message}");
-        }
+        Marshal.FreeHGlobal(ptr);
+        return value;
     }
 
-    public void Disconnect()
+    public static T ByteArrayToStructure<T>(byte[] data) where T : struct
     {
-        if (!isRunning) return;
-        isRunning = false;
-
-        try { stream?.Close(); } catch { }
-        try { client?.Close(); } catch { }
-
-        if (recvThread != null && recvThread.IsAlive)
-        {
-            try { recvThread.Join(100); } catch { }
-        }
-
-        Debug.Log("[Network] Disconnected");
+        return ByteArrayToStructure<T>(data, 0);
     }
 
-    private void OnDestroy() => Disconnect();
 }

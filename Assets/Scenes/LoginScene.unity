@@ -1300,11 +1300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9c10936def8204485e84694564c2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nicknameInputField: {fileID: 1596237549}
-  idInputField: {fileID: 694521872}
-  passwordInputField: {fileID: 528999919}
-  changeButton: {fileID: 1780789620}
+  nicknameInput: {fileID: 1596237549}
+  idInput: {fileID: 694521872}
+  pwInput: {fileID: 528999919}
   enterButton: {fileID: 2050810403}
+  modeButton: {fileID: 1780789620}
   messageText: {fileID: 1242496651}
   network: {fileID: 1375430905}
 --- !u!1 &989294691
@@ -2339,8 +2339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1033e499fc35db64f87189bac4a245b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverIP: 127.0.0.1
-  serverPort: 9000
 --- !u!4 &1375430906
 Transform:
   m_ObjectHideFlags: 0

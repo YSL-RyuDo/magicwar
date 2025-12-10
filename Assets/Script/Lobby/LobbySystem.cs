@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class LobbySystem : MonoBehaviour
 {
@@ -45,22 +46,22 @@ public class LobbySystem : MonoBehaviour
             startButton.onClick.AddListener(OnClickStartButton);
     }
 
-    private void OnProfileReceived(string msg)
+    private void OnProfileReceived(byte[] body)
     {
-        // 서버 응답: "닉네임,레벨,랭크ID,랭크점수,랭크MIN,랭크MAX"
-        string[] parts = msg.Split(',');
-        if (parts.Length < 6)
+        if (body.Length < Marshal.SizeOf<ProfilePacket>())
         {
-            Debug.LogError("[Lobby] 프로필 데이터 파싱 실패: " + msg);
+            Debug.LogError("[Lobby] 프로필 패킷 사이즈 오류");
             return;
         }
 
-        string nickname = parts[0];
-        string level = parts[1];
-        int rankId = int.Parse(parts[2]);
-        int rankScore = int.Parse(parts[3]);
-        int rankMin = int.Parse(parts[4]);
-        int rankMax = int.Parse(parts[5]);
+        ProfilePacket pkt = NetworkConnector.ByteArrayToStructure<ProfilePacket>(body);
+
+        string nickname = pkt.nickname.TrimEnd('\0');
+        uint level = pkt.level;
+        int rankId = (int)pkt.rankId;
+        int rankScore = (int)pkt.rankScore;
+        int rankMin = (int)pkt.rankMin;
+        int rankMax = (int)pkt.rankMax;
 
         // UI 업데이트
         nicknameText.text = nickname;
@@ -70,13 +71,13 @@ public class LobbySystem : MonoBehaviour
         if (rankId >= 0 && rankId < rankIcons.Length)
             rankImage.sprite = rankIcons[rankId];
 
-        // 슬라이더 설정
         rankScoreSlider.minValue = rankMin;
         rankScoreSlider.maxValue = rankMax;
         rankScoreSlider.value = rankScore;
 
         Debug.Log($"[Lobby] 프로필 적용 완료 → {nickname}, Lv.{level}, RankID:{rankId}, Score:{rankScore}/{rankMin}-{rankMax}");
     }
+
 
     private void OnClickSettingButton()
     {

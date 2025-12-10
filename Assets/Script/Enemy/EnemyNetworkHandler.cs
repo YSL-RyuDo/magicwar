@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class EnemyNetworkHandler : MonoBehaviour
@@ -19,25 +20,27 @@ public class EnemyNetworkHandler : MonoBehaviour
     }
 
     // 서버에서 이동 좌표 수신
-    private void OnReceiveEnemyMove(string msg)
+    private void OnReceiveEnemyMove(byte[] body)
     {
-        // 예: "asd,-1.11,1.10"
-        Debug.Log("[EnemyNetworkHandler] 받은 데이터 = " + msg);
-
-        string[] tokens = msg.Split(',');
-        if (tokens.Length >= 3)
+        if (body.Length < Marshal.SizeOf<EnemyMovePacket>())
         {
-            string enemyId = tokens[0];
-            if (float.TryParse(tokens[1], out float x) && float.TryParse(tokens[2], out float y))
-            {
-                Vector2 pos = new Vector2(x, y);
+            Debug.LogError("[EnemyNetworkHandler] EnemyMove 패킷 사이즈 오류");
+            return;
+        }
 
-                if (enemy != null)
-                {
-                    enemy.SetTargetPosition(pos);
-                    Debug.Log($"[EnemyNetworkHandler] {enemyId} 이동 → {pos}");
-                }
-            }
+        EnemyMovePacket pkt = NetworkConnector.ByteArrayToStructure<EnemyMovePacket>(body, 0);
+
+        string enemyId = pkt.enemyId.TrimEnd('\0');
+        float x = pkt.posX;
+        float y = pkt.posY;
+
+        Vector2 pos = new Vector2(x, y);
+
+        if (enemy != null)
+        {
+            enemy.SetTargetPosition(pos);
+            Debug.Log($"[EnemyNetworkHandler] {enemyId} 이동 → {pos}");
         }
     }
+
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System;
 
 public class GameSystem : MonoBehaviour
 {
@@ -51,94 +53,96 @@ public class GameSystem : MonoBehaviour
         }
     }
 
-    // 서버에서 마법 데이터 수신
-    private void OnReceiveCooldowns(string msg)
+    private void OnReceiveCooldowns(byte[] body)
     {
-        Debug.Log("[GameSystem] 받은 카드 데이터: " + msg);
-        // 예시 포맷:
-        // "1:3:50:10:0:0:1,5:5:20:8:2:3:1"
-        // ID:Cooldown:Attack:Speed:Radius:Duration:Amount
+        int offset = 0;
 
-        string[] cards = msg.Split(',');
-        for (int slot = 0; slot < cards.Length && slot < magicButtons.Length; slot++)
+        // 슬롯 개수 읽기
+        ushort slotCount = BitConverter.ToUInt16(body, offset);
+        offset += 2;
+
+        Debug.Log("[GameSystem] 받은 슬롯 개수: " + slotCount);
+
+        for (int slot = 0; slot < slotCount && slot < magicButtons.Length; slot++)
         {
-            string[] parts = cards[slot].Split(':');
-            if (parts.Length < 7) continue;
+            int structSize = Marshal.SizeOf<MagicSlotData>();
 
-            int id = int.Parse(parts[0]);
-            int cooldown = int.Parse(parts[1]);
-            int attack = int.Parse(parts[2]);
-            float speed = float.Parse(parts[3]);
-            float radius = float.Parse(parts[4]);
-            float duration = float.Parse(parts[5]);
-            int amount = int.Parse(parts[6]);
+            if (offset + structSize > body.Length)
+            {
+                Debug.LogError("[GameSystem] 슬롯 데이터 범위 초과");
+                break;
+            }
 
-            // 런타임 데이터 객체 생성
+            // 구조체 변환
+            MagicSlotData data = NetworkConnector.ByteArrayToStructure<MagicSlotData>(body, offset);
+            offset += structSize;
+
+            Debug.Log($"[Magic Slot {slot}] ID={data.id}, CD={data.cooldown}, ATK={data.attack}");
+
+            // 런타임 데이터 매핑
             CardRuntimeData runtimeData = new CardRuntimeData
             {
-                ID = id,
-                cooldown = cooldown,
-                attack = attack,
-                projectileSpeed = speed,
-                radius = radius,
-                duration = duration,
-                amount = amount
+                ID = data.id,
+                cooldown = data.cooldown,
+                attack = data.attack,
+                projectileSpeed = data.speed,
+                radius = data.radius,
+                duration = data.duration,
+                amount = data.amount
             };
 
-            // MagicCaster에 등록
+            // MagicCaster 저장
             if (magicCaster != null)
-                magicCaster.SetRuntimeData(id, runtimeData, slot);
-
-            // 버튼 UI 업데이트
-            //var card = FindCardData(id);
-            //if (card != null)
-            //{
-            //    magicButtons[slot].image.sprite = card.cardImage;
-
-            //    // 쿨타임 표시
-            //    Text cooldownText = magicButtons[slot].GetComponentInChildren<Text>();
-            //    if (cooldownText != null)
-            //        cooldownText.text = cooldown.ToString() + "s";
-            //}
+                magicCaster.SetRuntimeData(data.id, runtimeData, slot);
         }
     }
 
-    private void OnReceiveDamageResult(string msg)
+
+
+
+
+    private void OnReceiveDamageResult(byte[] body)
     {
-        // msg: "targetUserId,damage"
-        string[] tokens = msg.Split(',');
-        if (tokens.Length < 2) return;
+        if (body.Length < Marshal.SizeOf<DamagePacket>())
+        {
+            Debug.LogError("[GameSystem] DamagePacket 크기 오류");
+            return;
+        }
 
-        string targetId = tokens[0];
-        int damage = int.Parse(tokens[1]);
+        DamagePacket pkt = NetworkConnector.ByteArrayToStructure<DamagePacket>(body);
 
+        string targetId = pkt.targetId.TrimEnd('\0');
+        int damage = pkt.damage;
+
+        Debug.Log($"[Damage] Target={targetId}, Damage={damage}");
+
+        // ------- 내 캐릭터 -------
         if (SessionData.UserID == targetId)
         {
-            // 내가 맞음
             var player = GameObject.FindWithTag("Player");
             if (player != null)
             {
                 var health = player.GetComponent<CharacterHealth>();
                 if (health != null)
-                {
-                    health.TakeDamage(damage); // 기존 메서드 그대로 사용
-                }
+                    health.TakeDamage(damage);
             }
+            return;
         }
-        else if (SessionData.OpponentID == targetId)
+
+        // ------- 상대 -------
+        if (SessionData.OpponentID == targetId)
         {
-            // 상대방 맞음
             var enemy = GameObject.FindWithTag("Enemy");
             if (enemy != null)
             {
                 var enemyComp = enemy.GetComponent<Enemy>();
                 if (enemyComp != null)
-                {
-                    enemyComp.TakeDamage(damage); // 기존 메서드 그대로 사용
-                }
+                    enemyComp.TakeDamage(damage);
             }
+            return;
         }
     }
+
 
     // 카드 DB 검색
     private CardData FindCardData(int id)

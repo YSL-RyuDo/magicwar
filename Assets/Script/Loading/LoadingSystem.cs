@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 public class LoadingSystem : MonoBehaviour
 {
-    private string roomId;
-    private string myId;
-    private string opponentId;
+    private NetworkConnector network;
 
     [SerializeField] private Button cancelButton;
-    private NetworkConnector network;
 
     private void Start()
     {
@@ -19,49 +17,68 @@ public class LoadingSystem : MonoBehaviour
             cancelButton.onClick.AddListener(OnClickCancelButton);
 
         if (network != null)
-            network.Dispatcher.Register(PacketType.ResponseMatching, OnMatchResponse);
+            network.Dispatcher.Register(PacketType.ResponseMatching, OnMatchResponseBinary);
     }
 
     private void OnClickCancelButton()
     {
         Debug.Log("[Loading] 衙蘆 鏃模 ⊥ 煎綠煎 犒敝");
+
         string currentUserId = SessionData.UserID;
         network.SendPacket(PacketType.CancelMatch, currentUserId);
 
         SceneManager.LoadScene("LobbyScene");
     }
 
-    private void OnMatchResponse(string msg)
+    // ------------------------------
+    //   夥檜傘葬 衙蘆 擬港 籀葬
+    // ------------------------------
+    private void OnMatchResponseBinary(byte[] body)
     {
-        Debug.Log("[Loading] 衙蘆 擬港: " + msg);
-
-        if (msg.StartsWith("OK"))
+        if (body.Length < Marshal.SizeOf<MatchResponsePacket>())
         {
-            // OK,Room123,qwe,asd
-            string[] tokens = msg.Split(',');
-            if (tokens.Length >= 4)
-            {
-                string roomId = tokens[1];
-                string userA = tokens[2];
-                string userB = tokens[3];
-
-                string myId = SessionData.UserID; // 檜嘐 煎斜檣 衛薄縑 撮た脾
-                string opponentId = (userA == myId) ? userB : userA;
-
-                // 撮暮 盪濰
-                SessionData.RoomID = roomId;
-                SessionData.OpponentID = opponentId;
-
-                Debug.Log($"[Loading] 寞 ID={roomId}, 頂 ID={myId}, 鼻渠 ID={opponentId}");
-            }
-
-            // 衙蘆 撩奢 ⊥ GameScene戲煎 檜翕
-            SceneManager.LoadScene("GameScene");
+            Debug.LogError("[Loading] 衙蘆 ぬ韃 觼晦 螃盟");
+            return;
         }
-        else if (msg == "WAIT")
+
+        MatchResponsePacket pkt =
+            NetworkConnector.ByteArrayToStructure<MatchResponsePacket>(body);
+
+        Debug.Log($"[Loading] 衙蘆 擬港 熱褐: result={pkt.result}, room={pkt.roomId}, A={pkt.userA}, B={pkt.userB}");
+
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        //  1. WAIT
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        if (pkt.result == 0)
         {
-            Debug.Log("[Loading] 衙蘆 渠晦 醞...");
+            Debug.Log("[Loading] 衙蘆 渠晦(WAIT) 醞...");
+            return;
+        }
+
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        //  2. 衙蘆 撩奢 OK
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        if (pkt.result == 1)
+        {
+            string myId = SessionData.UserID;
+            string opponent = (pkt.userA == myId) ? pkt.userB : pkt.userA;
+
+            SessionData.RoomID = pkt.roomId;
+            SessionData.OpponentID = opponent;
+
+            Debug.Log($"[Loading] 衙蘆 諫猿 ⊥ Room={pkt.roomId}, My={myId}, Opponent={opponent}");
+
+            SceneManager.LoadScene("GameScene");
+            return;
+        }
+
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        //  3. 衙蘆 褒ぬ 籀葬
+        // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
+        if (pkt.result == 2)
+        {
+            Debug.LogWarning("[Loading] 衙蘆 褒ぬ");
+            SceneManager.LoadScene("LobbyScene");
         }
     }
-
 }

@@ -39,15 +39,16 @@ public class ResultUI : MonoBehaviour
         }
     }
 
-    private void OnVictory(string msg)
+    private void OnVictory(byte[] body)
     {
         ShowResult("WIN");
     }
 
-    private void OnDefeat(string msg)
+    private void OnDefeat(byte[] body)
     {
         ShowResult("LOSE");
     }
+
 
     private void ShowResult(string result)
     {
