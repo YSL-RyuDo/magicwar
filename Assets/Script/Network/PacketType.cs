@@ -10,32 +10,36 @@ public enum PacketType
     LoginSuccess = 5,
     LoginIDError = 6,
     LoginPWError = 7,
+    Logout = 8,
+    LOGIN_ALREADY = 9,
+    RequestProfile = 10,
+    ResponseProfile = 11,
+    LobbyChat = 12,
 
-    RequestProfile = 8,
-    ResponseProfile = 9,
 
-    RequestUserMagic = 10,   // 유저 마법 슬롯 요청
-    ResponseUserMagic = 11,   // 유저 마법 슬롯 응답
+    //RequestUserMagic = 10,   // 유저 마법 슬롯 요청
+    //ResponseUserMagic = 11,   // 유저 마법 슬롯 응답
 
-    RequestSetUserMagic = 12,    // 슬롯 변경 요청 (클라 → 서버)
-    ResponseSetUserMagic = 13,
+    //RequestSetUserMagic = 12,    // 슬롯 변경 요청 (클라 → 서버)
+    //ResponseSetUserMagic = 13,
 
-    RequestReplaceUserMagic = 14,
-    ResponseReplaceUserMagic = 15,
+    //RequestReplaceUserMagic = 14,
+    //ResponseReplaceUserMagic = 15,
 
-    RequestMatching = 16,
-    ResponseMatching = 17,
-    CancelMatch = 18,
+    //RequestMatching = 16,
+    //ResponseMatching = 17,
+    //CancelMatch = 18,
 
-    RequestMagicCooldowns = 19,
-    ResponseUserMagicCooldowns =20,
-    Move = 21,
-    CastMagic = 22,
-    SpawnMagic = 23,
-    UpdateMagic = 24,
-    Hit = 25,
-    DamageResult = 26,
-    Die = 27,
-    Defeat = 28,
-    Victory = 29,
+    //RequestMagicCooldowns = 19,
+    //ResponseUserMagicCooldowns =20,
+    //Move = 21,
+    //CastMagic = 22,
+    //SpawnMagic = 23,
+    //UpdateMagic = 24,
+    //Hit = 25,
+    //DamageResult = 26,
+    //Die = 27,
+    //Defeat = 28,
+    //Victory = 29,
+
 }

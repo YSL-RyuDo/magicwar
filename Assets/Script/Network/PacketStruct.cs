@@ -1,19 +1,72 @@
 using System;
 using System.Runtime.InteropServices;
 
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_SIGNUP_REQ
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string id;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
+    public string pw;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string nick;
+}
+
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct ProfilePacket
+public struct PKT_LOGIN_REQ
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string id;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
+    public string pw;
+}
+
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct LoginAckPacket
+{
+    public ushort result;   // uint16_t
+    public uint token;      // uint32_t
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string nick;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_RES_PROFILE_DATA
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
     public string nickname;
 
     public UInt32 level;
-    public UInt32 rankId;
+    public UInt32 exp;
+
+    public UInt32 rank;
     public UInt32 rankScore;
-    public UInt32 rankMin;
-    public UInt32 rankMax;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
+    public string rankName;
+
+    public UInt32 minScore;
+    public UInt32 maxScore;
 }
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_CHAT_LOBBY_DATA
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string nickname;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+    public string message;
+}
+
+
+//fffffffffffffffffffffffffffffffffffffffffff
 
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]

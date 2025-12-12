@@ -12,16 +12,39 @@ public class NetworkConnector : MonoBehaviour
     private Thread recvThread;
     private bool running;
 
-    public PacketDispatcher Dispatcher { get; } = new PacketDispatcher();
-
-    const int BufferSize = 4096;
-
-    private readonly ConcurrentQueue<Action> mainThreadQueue = new();
-
-    public bool IsConnected => client != null && client.Connected;
+    public PacketDispatcher Dispatcher { get; } = new();
 
     public static NetworkConnector Instance { get; private set; }
 
+    // ==============================
+    // Token (Runtime + Inspector)
+    // ==============================
+    [Header("Debug (Inspector)")]
+    [SerializeField]
+    private uint inspectorToken;   // 인스펙터 표시용
+
+    [SerializeField]
+    private uint token;            // 실제 내부 토큰
+
+    public uint Token
+    {
+        get => token;
+        private set
+        {
+            token = value;
+            inspectorToken = value;   // 인스펙터 자동 갱신
+        }
+    }
+
+    private readonly ConcurrentQueue<Action> mainThreadQueue = new();
+
+    private const int BUFFER_SIZE = 4096;
+    private readonly byte[] recvBuffer = new byte[8192];
+    private int recvBufferSize = 0;
+
+    // ==============================
+    // Unity LifeCycle
+    // ==============================
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,11 +64,15 @@ public class NetworkConnector : MonoBehaviour
 
     private void Update()
     {
-        while (mainThreadQueue.TryDequeue(out var action))
-            action();
+        while (mainThreadQueue.TryDequeue(out var act))
+            act();
     }
 
+    public bool IsConnected => client != null && client.Connected;
 
+    // ==============================
+    // CONNECT
+    // ==============================
     public void Connect(string ip, int port)
     {
         try
@@ -56,25 +83,26 @@ public class NetworkConnector : MonoBehaviour
             stream = client.GetStream();
             running = true;
 
-            recvThread = new Thread(ReceiveLoop);
-            recvThread.IsBackground = true;
+            recvThread = new Thread(ReceiveLoop)
+            {
+                IsBackground = true
+            };
             recvThread.Start();
 
-            Debug.Log("Connected to server.");
+            Debug.Log("[Network] 서버 연결 성공");
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Connect error: {ex.Message}");
+            Debug.LogError("[Network] 연결 실패: " + ex.Message);
         }
     }
 
-    // ------------------------------
-    //  바이너리 패킷 송신
-    // ------------------------------
+    // ==============================
+    // SEND (Raw)
+    // ==============================
     public void SendRaw(byte[] packet)
     {
-        if (!IsConnected)
-            return;
+        if (!IsConnected) return;
 
         try
         {
@@ -82,95 +110,135 @@ public class NetworkConnector : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Send error: {ex.Message}");
+            Debug.LogError("[Network] SendRaw 오류: " + ex.Message);
         }
     }
 
-    public void SendPacket(PacketType type, string message)
+    // ==============================
+    // SEND (Header + Body)
+    // Header: [packetId(2)][token(4)][bodySize(2)]
+    // ==============================
+    public void SendPacket(PacketType type, byte[] body)
     {
-        if (!IsConnected)
-        {
-            Debug.LogWarning("[Network] 연결되지 않아 패킷을 보낼 수 없습니다.");
-            return;
-        }
+        if (!IsConnected) return;
 
-        byte[] body = System.Text.Encoding.UTF8.GetBytes(message);
-        ushort bodySize = (ushort)body.Length;
+        ushort packetId = (ushort)type;
+        ushort bodySize = (ushort)(body?.Length ?? 0);
 
-        // 서버가 요구하는 구조 = ID(2) + SIZE(2) + BODY
-        byte[] packet = new byte[4 + bodySize];
+        byte[] packet = new byte[8 + bodySize];
 
-        // [0~1] packetId
-        Buffer.BlockCopy(BitConverter.GetBytes((ushort)type), 0, packet, 0, 2);
+        // packetId
+        Array.Copy(BitConverter.GetBytes(packetId), 0, packet, 0, 2);
 
-        // [2~3] bodySize
-        Buffer.BlockCopy(BitConverter.GetBytes(bodySize), 0, packet, 2, 2);
+        // token
+        Array.Copy(BitConverter.GetBytes(Token), 0, packet, 2, 4);
 
-        // [4~] body
-        Buffer.BlockCopy(body, 0, packet, 4, bodySize);
+        // bodySize
+        Array.Copy(BitConverter.GetBytes(bodySize), 0, packet, 6, 2);
 
-        stream.Write(packet, 0, packet.Length);
-        stream.Flush();
+        // body
+        if (bodySize > 0)
+            Array.Copy(body, 0, packet, 8, bodySize);
 
-        Debug.Log($"[Network] SendPacket → ID={type}, Body=\"{message}\"");
+        SendRaw(packet);
     }
 
+    // 문자열 전송용
+    public void SendPacket(PacketType type, string msg)
+    {
+        byte[] body = System.Text.Encoding.UTF8.GetBytes(msg);
+        SendPacket(type, body);
+    }
 
-
-    // ------------------------------
-    //  바이너리 패킷 수신
-    // ------------------------------
+    // ==============================
+    // RECEIVE LOOP
+    // ==============================
     private void ReceiveLoop()
     {
-        byte[] buffer = new byte[BufferSize];
+        byte[] tempBuffer = new byte[4096];
 
         while (running)
         {
             try
             {
-                int recv = stream.Read(buffer, 0, buffer.Length);
+                int recv = stream.Read(tempBuffer, 0, tempBuffer.Length);
+                if (recv <= 0)
+                    break;
 
-                if (recv < 4)      // 최소 헤더(4바이트)보다 작음 → 오류 또는 연결 종료
-                    continue;
+                // 1. 누적 버퍼에 복사
+                Buffer.BlockCopy(
+                    tempBuffer, 0,
+                    recvBuffer, recvBufferSize,
+                    recv);
 
-                ushort packetId = BitConverter.ToUInt16(buffer, 0);
-                ushort bodySize = BitConverter.ToUInt16(buffer, 2);
+                recvBufferSize += recv;
 
-                if (recv < 4 + bodySize)
-                    continue;
-
-                byte[] body = new byte[bodySize];
-                Array.Copy(buffer, 4, body, 0, bodySize);
-
-                mainThreadQueue.Enqueue(() =>
+                // 2. 패킷 파싱 루프
+                while (true)
                 {
-                    Dispatcher.Dispatch((PacketType)packetId, body);
-                });
+                    // 헤더 최소 크기 체크
+                    if (recvBufferSize < 8)
+                        break;
+
+                    ushort packetId = BitConverter.ToUInt16(recvBuffer, 0);
+                    uint recvToken = BitConverter.ToUInt32(recvBuffer, 2);
+                    ushort bodySize = BitConverter.ToUInt16(recvBuffer, 6);
+
+                    int totalSize = 8 + bodySize;
+
+                    // 바디가 아직 덜 왔으면 대기
+                    if (recvBufferSize < totalSize)
+                        break;
+
+                    // 3. 바디 추출
+                    byte[] body = new byte[bodySize];
+                    if (bodySize > 0)
+                        Buffer.BlockCopy(recvBuffer, 8, body, 0, bodySize);
+
+                    // 4. 버퍼 정리 (남은 데이터 앞으로 당김)
+                    Buffer.BlockCopy(
+                        recvBuffer, totalSize,
+                        recvBuffer, 0,
+                        recvBufferSize - totalSize);
+
+                    recvBufferSize -= totalSize;
+
+                    // 5. 메인 스레드로 디스패치
+                    mainThreadQueue.Enqueue(() =>
+                    {
+                        // 로그인 성공 시 토큰 갱신
+                        if (packetId == (ushort)PacketType.LoginSuccess)
+                        {
+                            Token = recvToken;
+                            Debug.Log($"[Network] Token 갱신: {Token}");
+                        }
+
+                        Dispatcher.Dispatch((PacketType)packetId, body);
+                    });
+                }
             }
-            catch
+            catch (Exception e)
             {
-                running = false;
-                Debug.LogWarning("Server disconnected.");
+                Debug.LogWarning("[Network] 서버 연결 종료: " + e.Message);
                 break;
             }
         }
+
+        running = false;
     }
 
-    public static T ByteArrayToStructure<T>(byte[] data, int startIndex) where T : struct
+    // ==============================
+    // STRUCT 변환
+    // ==============================
+    public static T ByteArrayToStructure<T>(byte[] data) where T : struct
     {
         int size = Marshal.SizeOf<T>();
         IntPtr ptr = Marshal.AllocHGlobal(size);
 
-        Marshal.Copy(data, startIndex, ptr, size);
-        T value = Marshal.PtrToStructure<T>(ptr);
+        Marshal.Copy(data, 0, ptr, size);
+        T result = Marshal.PtrToStructure<T>(ptr);
 
         Marshal.FreeHGlobal(ptr);
-        return value;
+        return result;
     }
-
-    public static T ByteArrayToStructure<T>(byte[] data) where T : struct
-    {
-        return ByteArrayToStructure<T>(data, 0);
-    }
-
 }
