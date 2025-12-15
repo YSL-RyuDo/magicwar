@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
+using System;
 
 public class SettingSystem : MonoBehaviour
 {
@@ -45,7 +47,7 @@ public class SettingSystem : MonoBehaviour
 
             // 서버 응답 등록
             network.Dispatcher.Register(PacketType.ResponseUserMagic, OnUserMagicReceived);
-            network.Dispatcher.Register(PacketType.ResponseSetUserMagic, OnUserMagicDetailReceived);
+            network.Dispatcher.Register(PacketType.ResponseMagicDetail, OnUserMagicDetailReceived);
             network.Dispatcher.Register(PacketType.ResponseReplaceUserMagic, OnReplaceResult);
         }
         else
@@ -78,24 +80,15 @@ public class SettingSystem : MonoBehaviour
     // -------------------------------
     private void OnUserMagicReceived(byte[] data)
     {
-        string msg = System.Text.Encoding.UTF8.GetString(data);
+        PKT_RES_USER_MAGIC pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_RES_USER_MAGIC>(data);
 
-        // 예: "0,1,4,7"
-        var slots = msg.Split(',');
-        if (slots.Length < slotImages.Length)
+        for (int i = 0; i < pkt.slotCount; i++)
         {
-            Debug.LogError("[Setting] 잘못된 슬롯 수신: " + msg);
-            return;
-        }
-
-        for (int i = 0; i < slotImages.Length; i++)
-        {
-            if (int.TryParse(slots[i], out int cardId))
-                UpdateSlot(i, cardId);
-            else
-                ClearSlot(i);
+            UpdateSlot(i, pkt.cardIds[i]);
         }
     }
+
 
 
     private void UpdateSlot(int index, int cardId)
@@ -111,7 +104,19 @@ public class SettingSystem : MonoBehaviour
             infoButtons[index].onClick.RemoveAllListeners();
             infoButtons[index].onClick.AddListener(() =>
             {
-                network.SendPacket(PacketType.RequestSetUserMagic, cardId.ToString());
+                // 바이너리 요청 구조체 생성
+                PKT_REQ_MAGIC_DETAIL req = new PKT_REQ_MAGIC_DETAIL
+                {
+                    cardId = cardId
+                };
+
+                // 구조체 → byte[]
+                byte[] body = NetworkConnector.StructToBytes(req);
+
+                // 전송
+                network.SendPacket(PacketType.RequestMagicDetail, body);
+
+                Debug.Log($"[Setting] MagicDetail 요청 cardId={cardId}");
             });
         }
         else
@@ -119,6 +124,7 @@ public class SettingSystem : MonoBehaviour
             ClearSlot(index);
         }
     }
+
 
     private void ClearSlot(int index)
     {
@@ -135,30 +141,20 @@ public class SettingSystem : MonoBehaviour
     // -------------------------------
     private void OnUserMagicDetailReceived(byte[] data)
     {
-        // byte[] → string 변환
-        string msg = System.Text.Encoding.UTF8.GetString(data);
+        PKT_RES_MAGIC_DETAIL pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_RES_MAGIC_DETAIL>(data);
 
-        // 서버 예시: "11,MagicWall,0,8,5,Wall,0,4,8,200"
-        var p = msg.Split(',');
-        if (p.Length < 10)
-        {
-            Debug.LogError("[Setting] 잘못된 상세 응답: " + msg);
-            return;
-        }
+        magicNameText.text = pkt.name;
+        magicAttackText.text = $"Attack: {pkt.attack}";
+        magicCooldownText.text = $"Cooldown: {pkt.cooldown}";
+        magicCostText.text = $"Cost: {pkt.cost}";
+        magicEffectTypeText.text = pkt.effectType;
+        magicSpeedText.text = $"Speed: {pkt.speed}";
+        magicRadiusText.text = $"Radius: {pkt.radius}";
+        magicDurationText.text = $"Duration: {pkt.duration}";
+        magicAmountText.text = $"Amount: {pkt.amount}";
 
-        int id = int.Parse(p[0]);
-        CardData card = System.Array.Find(cardDatabase.cards, c => c.ID == id);
-
-        magicNameText.text = p[1];
-        magicAttackText.text = $"Attack: {p[2]}";
-        magicCooldownText.text = $"Cooldown: {p[3]}";
-        magicCostText.text = $"Cost: {p[4]}";
-        magicEffectTypeText.text = p[5];
-        magicSpeedText.text = $"Speed: {p[6]}";
-        magicRadiusText.text = $"Radius: {p[7]}";
-        magicDurationText.text = $"Duration: {p[8]}";
-        magicAmountText.text = $"Amount: {p[9]}";
-
+        CardData card = System.Array.Find(cardDatabase.cards, c => c.ID == pkt.id);
         if (card != null)
         {
             magicImage.sprite = card.cardImage;
@@ -167,7 +163,6 @@ public class SettingSystem : MonoBehaviour
 
         magicPanel.SetActive(true);
     }
-
 
 
     // -------------------------------
@@ -185,33 +180,58 @@ public class SettingSystem : MonoBehaviour
     {
         if (!isReplaceMode) return;
 
-        CardData oldCard = null;
+        int oldCardId = -1;
         if (slotImages[slotIndex].sprite != null)
-            oldCard = System.Array.Find(cardDatabase.cards, c => c.cardImage == slotImages[slotIndex].sprite);
+        {
+            CardData oldCard =
+                System.Array.Find(cardDatabase.cards,
+                    c => c.cardImage == slotImages[slotIndex].sprite);
 
-        int oldCardId = oldCard != null ? oldCard.ID : -1;
+            if (oldCard != null)
+                oldCardId = oldCard.ID;
+        }
 
-        string payload = $"{SessionData.UserID},{oldCardId},{pendingCardId}";
-        network.SendPacket(PacketType.RequestReplaceUserMagic, payload);
+        PKT_REQ_REPLACE_MAGIC req = new PKT_REQ_REPLACE_MAGIC
+        {
+            oldCardId = oldCardId,
+            newCardId = pendingCardId
+        };
+
+        network.SendPacket(PacketType.RequestReplaceUserMagic, NetworkConnector.StructToBytes(req));
+
 
         isReplaceMode = false;
         pendingCardId = -1;
     }
-
 
     // -------------------------------
     //  서버 교체 응답
     // -------------------------------
     private void OnReplaceResult(byte[] data)
     {
-        string msg = System.Text.Encoding.UTF8.GetString(data);
+        if (data.Length < Marshal.SizeOf<PKT_RES_REPLACE_USER_MAGIC>())
+        {
+            Debug.LogError("[Setting] 교체 응답 패킷 크기 오류");
+            return;
+        }
 
-        Debug.Log("[Setting] 교체 응답 수신: " + msg);
+        PKT_RES_REPLACE_USER_MAGIC res =
+            NetworkConnector.ByteArrayToStructure<PKT_RES_REPLACE_USER_MAGIC>(data);
 
-        // 필요하면 여기서 교체 성공/실패 처리 가능
-        // 예: if (msg == "OK") { ... }
+        Debug.Log("[Setting] 교체 결과 = " + res.result);
+
+        if (res.result == 1)
+        {
+            Debug.Log("[Setting] 교체 성공 → 슬롯 재요청");
+
+            // 여기서 다시 슬롯 요청
+            network.SendPacket(PacketType.RequestUserMagic, Array.Empty<byte>());
+        }
+        else
+        {
+            Debug.LogWarning("[Setting] 교체 실패");
+        }
     }
-
 
 
     public void CloseMagicPanel()
@@ -229,7 +249,7 @@ public class SettingSystem : MonoBehaviour
         if (network != null)
         {
             network.Dispatcher.Unregister(PacketType.ResponseUserMagic, OnUserMagicReceived);
-            network.Dispatcher.Unregister(PacketType.ResponseSetUserMagic, OnUserMagicDetailReceived);
+            network.Dispatcher.Unregister(PacketType.ResponseMagicDetail, OnUserMagicDetailReceived);
             network.Dispatcher.Unregister(PacketType.ResponseReplaceUserMagic, OnReplaceResult);
         }
     }

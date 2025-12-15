@@ -59,7 +59,9 @@ public class NetworkConnector : MonoBehaviour
 
     private void Start()
     {
-        Connect("127.0.0.1", 9000);
+        Connect("211.247.47.240", 9000);
+        SendPacket(PacketType.PING, Array.Empty<byte>());
+
     }
 
     private void Update()
@@ -240,5 +242,24 @@ public class NetworkConnector : MonoBehaviour
 
         Marshal.FreeHGlobal(ptr);
         return result;
+    }
+
+    public static byte[] StructToBytes<T>(T str) where T : struct
+    {
+        int size = Marshal.SizeOf<T>();
+        byte[] arr = new byte[size];
+
+        IntPtr ptr = Marshal.AllocHGlobal(size);
+        Marshal.StructureToPtr(str, ptr, true);
+        Marshal.Copy(ptr, arr, 0, size);
+        Marshal.FreeHGlobal(ptr);
+
+        return arr;
+    }
+
+    public void ResetToken()
+    {
+        Token = 0;
+        Debug.Log("[Network] Token reset to 0");
     }
 }

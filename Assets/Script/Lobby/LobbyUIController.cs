@@ -29,6 +29,12 @@ public class LobbyUIController : MonoBehaviour
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject playerObject;
 
+    [Header("Logout Emotion Image")]
+    [SerializeField] private Image logoutEmotionImage;
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite cryingSprite;
+    [SerializeField] private Sprite smilingSprite;
+
     [Header("Other Buttons")]
     [SerializeField] private Button settingButton;
     [SerializeField] private Button startButton;
@@ -54,6 +60,9 @@ public class LobbyUIController : MonoBehaviour
 
         startButton?.onClick.AddListener(() =>
             SceneManager.LoadScene("LoadingScene"));
+
+        AddHoverEvent(confirmButton, cryingSprite);
+        AddHoverEvent(cancelButton, smilingSprite);
     }
 
     private void Update()
@@ -107,13 +116,21 @@ public class LobbyUIController : MonoBehaviour
     private void OnClickLogout()
     {
         logoutPanel.SetActive(true);
-        if (playerObject) playerObject.SetActive(false);
+
+        if (logoutEmotionImage != null)
+            logoutEmotionImage.sprite = defaultSprite;
+
+        if (playerObject)
+            playerObject.SetActive(false);
     }
+
 
     private void OnClickConfirm()
     {
+        NetworkConnector.Instance.ResetToken();
         NetworkConnector.Instance.SendPacket(PacketType.Logout, System.Array.Empty<byte>());
-        SceneManager.LoadScene("LoginScene");
+
+        Application.Quit();
     }
 
     private void OnClickCancel()
@@ -121,4 +138,39 @@ public class LobbyUIController : MonoBehaviour
         logoutPanel.SetActive(false);
         if (playerObject) playerObject.SetActive(true);
     }
+
+    private void AddHoverEvent(Button btn, Sprite hoverSprite)
+    {
+        EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = btn.gameObject.AddComponent<EventTrigger>();
+
+        trigger.triggers ??= new System.Collections.Generic.List<EventTrigger.Entry>();
+
+        // Mouse Enter
+        EventTrigger.Entry enter = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerEnter
+        };
+        enter.callback.AddListener(_ =>
+        {
+            if (logoutEmotionImage != null)
+                logoutEmotionImage.sprite = hoverSprite;
+        });
+
+        // Mouse Exit
+        EventTrigger.Entry exit = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerExit
+        };
+        exit.callback.AddListener(_ =>
+        {
+            if (logoutEmotionImage != null)
+                logoutEmotionImage.sprite = defaultSprite;
+        });
+
+        trigger.triggers.Add(enter);
+        trigger.triggers.Add(exit);
+    }
+
 }

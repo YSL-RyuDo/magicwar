@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crying_0: -309459452766167434
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

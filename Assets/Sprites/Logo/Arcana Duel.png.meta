@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Arcana Duel_0: 8597272979045257283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

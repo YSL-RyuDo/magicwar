@@ -65,68 +65,170 @@ public struct PKT_CHAT_LOBBY_DATA
     public string message;
 }
 
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_RES_USER_MAGIC
+{
+    public int slotCount;
 
-//fffffffffffffffffffffffffffffffffffffffffff
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+    public int[] cardIds;
+}
 
+[System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, Pack = 1)]
+public struct PKT_REQ_MAGIC_DETAIL
+{
+    public int cardId;
+}
+
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_RES_MAGIC_DETAIL
+{
+    public int id;
+    public int attack;
+    public int cooldown;
+    public int cost;
+    public int speed;
+    public int radius;
+    public int duration;
+    public int amount;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string name;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
+    public string effectType;
+}
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct MatchResponsePacket
+public struct PKT_REQ_REPLACE_MAGIC
 {
-    public byte result;   // 0=WAIT, 1=OK, 2=FAIL
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-    public string roomId;
+    public int oldCardId;
+    public int newCardId;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_RES_REPLACE_USER_MAGIC
+{
+    public byte result; // 1 = 성공, 0 = 실패
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_MATCH_RESPONSE_STRUCT
+{
+    public byte result;
+    public uint roomId;
+
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
     public string userA;
+
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
     public string userB;
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct MagicSlotData
+public struct PKT_MOVE_STRUCT
 {
-    public int id;
-    public int cooldown;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+
+    public float x;
+    public float y;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_RES_HP_STRUCT
+{
+    public int currentHp;
+    public int maxHp;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct DamageRequestPacket
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string attackerId;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string targetId;
+
+    public int cardId;
+    public int damage;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_CAST_MAGIC
+{
+    public int cardId;
+    public float dirX;
+    public float dirY;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_SPAWN_MAGIC
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string casterId;
+
+    public int cardId;
+
+    public float dirX;
+    public float dirY;
+
+    public int attack;
+    public float projectileSpeed;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_REQ_MAGIC_DETAIL_GAME_STRUCT
+{
+    public int cardId;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_RES_MAGIC_DETAIL_GAME_STRUCT
+{
+    public int cardId;
+
     public int attack;
     public float speed;
+    public float cooldown;
+
     public float radius;
     public float duration;
     public int amount;
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
-public struct DamagePacket
+public struct PKT_DIE
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string deadUserId;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_RESULT
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+}
+
+// 상태이상
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_STATUS_SLOW_STRUCT
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
     public string targetId;
 
-    public int damage;
-}
-
-
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct EnemyMovePacket
-{
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-    public string enemyId;   // 적 유저 ID (문자열은 고정 길이)
-
-    public float posX;
-    public float posY;
+    public float slowRatio;
+    public int durationMs;
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct SpawnMagicPacket
+public struct PKT_STATUS_STUN_STRUCT
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-    public string userId;
+    public string targetId;
 
-    public int cardId;
-
-    public float posX;
-    public float posY;
-
-    public float dirX;
-    public float dirY;
-
-    public int attack;
-    public float speed;
+    public int durationMs;
 }

@@ -50,11 +50,21 @@ public class CardPopupPanel : MonoBehaviour
             var network = FindFirstObjectByType<NetworkConnector>();
             if (network != null && network.IsConnected)
             {
-                network.SendPacket(PacketType.RequestSetUserMagic, currentCard.ID.ToString());
-                Debug.Log($"[Popup] Info {currentCard.cardName} (ID={currentCard.ID}) → 서버 전송");
+                PKT_REQ_MAGIC_DETAIL pkt = new PKT_REQ_MAGIC_DETAIL
+                {
+                    cardId = currentCard.ID
+                };
+
+                network.SendPacket(
+                    PacketType.RequestMagicDetail,
+                    NetworkConnector.StructToBytes(pkt)
+                );
+
+                Debug.Log($"[Popup] Info {currentCard.cardName} (ID={currentCard.ID}) → 바이너리 요청");
             }
             Hide();
         });
+
     }
 
     public void Hide()

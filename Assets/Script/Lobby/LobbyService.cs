@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class LobbyService : MonoBehaviour
 {
@@ -23,8 +24,17 @@ public class LobbyService : MonoBehaviour
 
         network.Dispatcher.Register(PacketType.ResponseProfile, OnProfileReceived);
         network.Dispatcher.Register(PacketType.LobbyChat, OnChatReceived);
+        
 
         RequestProfile();
+    }
+
+    private void OnDestroy()
+    {
+        if (network == null) return;
+
+        network.Dispatcher.Unregister(PacketType.ResponseProfile, OnProfileReceived);
+        network.Dispatcher.Unregister(PacketType.LobbyChat, OnChatReceived);
     }
 
     public void RequestProfile()
@@ -80,4 +90,7 @@ public class LobbyService : MonoBehaviour
 
         ui.AddChat(chat);
     }
+
+    
+
 }

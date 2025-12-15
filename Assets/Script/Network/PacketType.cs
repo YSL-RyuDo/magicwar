@@ -2,11 +2,9 @@ public enum PacketType
 {
     Signup = 0,
     Login = 1,
-
     SignupSuccess = 2,
-    SignupNickError = 3,
-    SignupIDError = 4,
-
+    SignupIDError = 3,
+    SignupNickError = 4,
     LoginSuccess = 5,
     LoginIDError = 6,
     LoginPWError = 7,
@@ -15,24 +13,31 @@ public enum PacketType
     RequestProfile = 10,
     ResponseProfile = 11,
     LobbyChat = 12,
-
-
-    //RequestUserMagic = 10,   // 유저 마법 슬롯 요청
-    //ResponseUserMagic = 11,   // 유저 마법 슬롯 응답
-
-    //RequestSetUserMagic = 12,    // 슬롯 변경 요청 (클라 → 서버)
-    //ResponseSetUserMagic = 13,
-
-    //RequestReplaceUserMagic = 14,
-    //ResponseReplaceUserMagic = 15,
-
-    //RequestMatching = 16,
-    //ResponseMatching = 17,
-    //CancelMatch = 18,
-
-    //RequestMagicCooldowns = 19,
-    //ResponseUserMagicCooldowns =20,
-    //Move = 21,
+    RequestUserMagic = 13,
+    ResponseUserMagic = 14,
+    RequestMagicDetail = 15,
+    ResponseMagicDetail = 16,
+    RequestReplaceUserMagic = 17,
+    ResponseReplaceUserMagic = 18,
+    RequestMatching = 19,
+    ResponseMatching = 20,
+    CancelMatch = 21,
+    Move = 22,
+    RequestHP = 23,
+    ResponseHP = 24,
+    Hit = 25,
+    //DamageResult = 26,
+    Die = 27,
+    Defeat = 28,
+    Victory = 29,
+    CastMagic = 30,
+    SpawnMagic = 31,
+    PKT_REQ_MAGIC_DETAIL = 32,
+    PKT_RES_MAGIC_DETAIL = 33,
+    PKT_STATUS_SLOW = 100,
+    PKT_STATUS_STUN = 101,
+    PING = 254,
+    PING_ACK = 255
     //CastMagic = 22,
     //SpawnMagic = 23,
     //UpdateMagic = 24,

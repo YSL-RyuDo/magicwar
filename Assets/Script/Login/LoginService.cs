@@ -1,31 +1,44 @@
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LoginService : MonoBehaviour
 {
     [SerializeField] private NetworkConnector network;
     [SerializeField] private LoginUIController ui;
 
-    private string pendingLoginId; // 로그인 시도한 ID를 저장
+    private string pendingLoginId; // 로그인 시도한 ID 저장
 
+    // =========================
+    // Unity Lifecycle
+    // =========================
     private void Start()
     {
         network.Dispatcher.Register(PacketType.LoginSuccess, OnLoginOK);
-        network.Dispatcher.Register(PacketType.LoginIDError,
-            _ => ui.SetMessage("Login failed. ID not found."));
-        network.Dispatcher.Register(PacketType.LoginPWError,
-            _ => ui.SetMessage("Login failed. Incorrect password."));
-        network.Dispatcher.Register(PacketType.LOGIN_ALREADY,
-            _ => ui.SetMessage("This account is already logged in."));
+        network.Dispatcher.Register(PacketType.LoginIDError, OnLoginIDError);
+        network.Dispatcher.Register(PacketType.LoginPWError, OnLoginPWError);
+        network.Dispatcher.Register(PacketType.LOGIN_ALREADY, OnLoginAlready);
 
-        network.Dispatcher.Register(PacketType.SignupSuccess,
-            _ => ui.SetMessage("Signup successful. Please log in."));
-        network.Dispatcher.Register(PacketType.SignupIDError,
-            _ => ui.SetMessage("Signup failed. ID already exists."));
-        network.Dispatcher.Register(PacketType.SignupNickError,
-            _ => ui.SetMessage("Signup failed. Nickname already exists."));
+        network.Dispatcher.Register(PacketType.SignupSuccess, OnSignupSuccess);
+        network.Dispatcher.Register(PacketType.SignupIDError, OnSignupIDError);
+        network.Dispatcher.Register(PacketType.SignupNickError, OnSignupNickError);
+    }
+
+    private void OnDestroy()
+    {
+        if (network == null || network.Dispatcher == null)
+            return;
+
+        network.Dispatcher.Unregister(PacketType.LoginSuccess, OnLoginOK);
+        network.Dispatcher.Unregister(PacketType.LoginIDError, OnLoginIDError);
+        network.Dispatcher.Unregister(PacketType.LoginPWError, OnLoginPWError);
+        network.Dispatcher.Unregister(PacketType.LOGIN_ALREADY, OnLoginAlready);
+
+        network.Dispatcher.Unregister(PacketType.SignupSuccess, OnSignupSuccess);
+        network.Dispatcher.Unregister(PacketType.SignupIDError, OnSignupIDError);
+        network.Dispatcher.Unregister(PacketType.SignupNickError, OnSignupNickError);
+
+        Debug.Log("[LoginService] Dispatcher Unregister 완료");
     }
 
     // =========================
@@ -33,7 +46,7 @@ public class LoginService : MonoBehaviour
     // =========================
     public void RequestLogin(string id, string pw)
     {
-        pendingLoginId = id; // UI에서 받은 ID를 저장
+        pendingLoginId = id;
 
         PKT_LOGIN_REQ req = new PKT_LOGIN_REQ
         {
@@ -62,7 +75,7 @@ public class LoginService : MonoBehaviour
     }
 
     // =========================
-    // Login Success
+    // Packet Callbacks
     // =========================
     private void OnLoginOK(byte[] body)
     {
@@ -82,6 +95,36 @@ public class LoginService : MonoBehaviour
         Debug.Log($"[Login] Success: {SessionData.UserID}");
 
         ui.OnLoginSuccess();
+    }
+
+    private void OnLoginIDError(byte[] _)
+    {
+        ui.SetMessage("Login failed. ID not found.");
+    }
+
+    private void OnLoginPWError(byte[] _)
+    {
+        ui.SetMessage("Login failed. Incorrect password.");
+    }
+
+    private void OnLoginAlready(byte[] _)
+    {
+        ui.SetMessage("This account is already logged in.");
+    }
+
+    private void OnSignupSuccess(byte[] _)
+    {
+        ui.SetMessage("Signup successful. Please log in.");
+    }
+
+    private void OnSignupIDError(byte[] _)
+    {
+        ui.SetMessage("Signup failed. ID already exists.");
+    }
+
+    private void OnSignupNickError(byte[] _)
+    {
+        ui.SetMessage("Signup failed. Nickname already exists.");
     }
 
     // =========================

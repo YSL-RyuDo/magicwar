@@ -855,7 +855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0009877131}
+  m_AnchoredPosition: {x: 0, y: -0.00001809639}
   m_SizeDelta: {x: 0, y: 59.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &447758462
@@ -1820,7 +1820,7 @@ Camera:
   m_GameObject: {fileID: 817192440}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3651,9 +3651,9 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 720, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4216,7 +4216,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1263616524}
   m_HandleRect: {fileID: 1263616523}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4794,6 +4794,10 @@ MonoBehaviour:
   confirmButton: {fileID: 1028464807}
   cancelButton: {fileID: 1369546854}
   playerObject: {fileID: 4105362947026509377}
+  logoutEmotionImage: {fileID: 1495236402}
+  defaultSprite: {fileID: 4329407632164072968, guid: 53d56ec7a5f1f364ab054c94367c04b1, type: 3}
+  cryingSprite: {fileID: -309459452766167434, guid: e7b594538447c9e4c904b0e070b3f06e, type: 3}
+  smilingSprite: {fileID: -74723139614053374, guid: 9cb86baaaa577f54481266a298adb426, type: 3}
   settingButton: {fileID: 577866423}
   startButton: {fileID: 1488022825}
 --- !u!1 &2065021729

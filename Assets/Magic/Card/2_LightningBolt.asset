@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a8f539c53dc7440b48382900bec95f, type: 3}
+  m_Name: 2_LightningBolt
+  m_EditorClassIdentifier: 
+  ID: 2
+  cardName: LightningBolt
+  cardImage: {fileID: -6278663978556736651, guid: 97a1461a21d71724da4326b12f09ec8c, type: 3}
+  description: LightningBolt
+  playerPrefab: {fileID: 7144124580649679034, guid: dbb4c23dac587e4468b85850614f79d0, type: 3}
+  enemyPrefab: {fileID: 7144124580649679034, guid: dbb4c23dac587e4468b85850614f79d0, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}
