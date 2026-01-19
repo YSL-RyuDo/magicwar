@@ -47,9 +47,9 @@ public class EnemyService : MonoBehaviour
         PKT_MOVE_STRUCT pkt =
             NetworkConnector.ByteArrayToStructure<PKT_MOVE_STRUCT>(body);
 
-        Debug.Log(
-            $"[EnemyService] Parsed Move Packet | userId={pkt.userId} x={pkt.x} y={pkt.y}"
-        );
+        //Debug.Log(
+        //    $"[EnemyService] Parsed Move Packet | userId={pkt.userId} x={pkt.x} y={pkt.y}"
+        //);
 
         if (enemy == null)
         {

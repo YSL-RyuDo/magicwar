@@ -9,9 +9,14 @@ public class LoginService : MonoBehaviour
 
     private string pendingLoginId; // 로그인 시도한 ID 저장
 
-    // =========================
     // Unity Lifecycle
-    // =========================
+
+    void Awake()
+    {
+        Screen.SetResolution(576, 864, false);
+    }
+
+
     private void Start()
     {
         network.Dispatcher.Register(PacketType.LoginSuccess, OnLoginOK);
@@ -41,9 +46,7 @@ public class LoginService : MonoBehaviour
         Debug.Log("[LoginService] Dispatcher Unregister 완료");
     }
 
-    // =========================
     // Login Request
-    // =========================
     public void RequestLogin(string id, string pw)
     {
         pendingLoginId = id;
@@ -58,9 +61,7 @@ public class LoginService : MonoBehaviour
         ui.SetMessage("Logging in...");
     }
 
-    // =========================
     // Signup Request
-    // =========================
     public void RequestSignup(string id, string pw, string nick)
     {
         PKT_SIGNUP_REQ req = new PKT_SIGNUP_REQ
@@ -74,9 +75,7 @@ public class LoginService : MonoBehaviour
         ui.SetMessage("Signing up...");
     }
 
-    // =========================
     // Packet Callbacks
-    // =========================
     private void OnLoginOK(byte[] body)
     {
         if (body.Length < Marshal.SizeOf<LoginAckPacket>())
@@ -127,9 +126,7 @@ public class LoginService : MonoBehaviour
         ui.SetMessage("Signup failed. Nickname already exists.");
     }
 
-    // =========================
     // Struct → byte[]
-    // =========================
     private static byte[] StructToBytes<T>(T str) where T : struct
     {
         int size = Marshal.SizeOf<T>();

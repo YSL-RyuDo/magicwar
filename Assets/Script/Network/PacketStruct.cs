@@ -88,9 +88,9 @@ public struct PKT_RES_MAGIC_DETAIL
     public int attack;
     public int cooldown;
     public int cost;
-    public int speed;
-    public int radius;
-    public int duration;
+    public float speed;
+    public float radius;
+    public float duration;
     public int amount;
 
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
@@ -211,6 +211,31 @@ public struct PKT_RESULT
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
     public string userId;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_CAST_FIELD_MAGIC
+{
+    public int cardId;
+    public float localX;
+    public float localY;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_SPAWN_FIELD_MAGIC
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string casterId;
+
+    public int cardId;
+
+    public float localX;
+    public float localY;
+
+    public int attack;
+    public float radius;
+    public float duration;
+    public int amount;
 }
 
 // 상태이상

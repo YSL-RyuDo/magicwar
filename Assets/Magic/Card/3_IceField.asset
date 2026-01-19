@@ -16,7 +16,6 @@ MonoBehaviour:
   cardName: IceField
   cardImage: {fileID: -8646796131227450236, guid: 525e041fa9995644c805b38505d2d4a0, type: 3}
   description: IceField
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  effects:
-  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}
+  playerPrefab: {fileID: 5723585102446188786, guid: 2ffa0bdd021de3c44b264a8a49dc4ad0, type: 3}
+  enemyPrefab: {fileID: 5723585102446188786, guid: 2ffa0bdd021de3c44b264a8a49dc4ad0, type: 3}
+  effects: []

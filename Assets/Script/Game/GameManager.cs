@@ -21,11 +21,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CardDatabase cardDB;
 
-    // =============================
     // Life Cycle
-    // =============================
     private void Awake()
     {
+        Screen.SetResolution(576, 864, false);
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -60,18 +59,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // =============================
     // MyCaster
-    // =============================
     public void RegisterMyCaster(MagicCaster caster)
     {
         if (MyCaster != null) return;
         MyCaster = caster;
     }
 
-    // =============================
     // Magic Select
-    // =============================
+
     private void SelectMagic(int slotIndex)
     {
         int cardId = EquippedMagicIds[slotIndex];
@@ -85,9 +81,53 @@ public class GameManager : MonoBehaviour
         SelectMagic(slotIndex);
     }
 
-    // =============================
     // Magic Cast + Cooldown
-    // =============================
+    //private void TryCastSelectedMagic()
+    //{
+    //    if (SelectedMagicSlot < 0)
+    //        return;
+
+    //    int cardId = EquippedMagicIds[SelectedMagicSlot];
+    //    if (cardId < 0)
+    //        return;
+
+    //    if (!IsMagicReady(SelectedMagicSlot))
+    //        return;
+
+    //    CardRuntimeData stat =
+    //        CardStatManager.Instance.GetStat(cardId);
+
+    //    if (stat == null)
+    //        return;
+
+    //    Vector2 mouseWorld =
+    //        Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+    //    MyCaster.Cast(cardId, mouseWorld);
+
+    //    var controller = MyCaster.GetComponent<CharacterController2D>();
+    //    if (controller != null)
+    //    {
+    //        controller.ApplyCastLock(250); // 0.25초
+    //    }
+
+    //    Vector2 dir =
+    //        (mouseWorld - (Vector2)MyCaster.FirePoint.position).normalized;
+
+    //    PKT_CAST_MAGIC pkt = new PKT_CAST_MAGIC
+    //    {
+    //        cardId = cardId,
+    //        dirX = dir.x,
+    //        dirY = dir.y
+    //    };
+
+    //    network.SendPacket(
+    //        PacketType.CastMagic,
+    //        NetworkConnector.StructToBytes(pkt)
+    //    );
+
+    //    StartCooldown(SelectedMagicSlot, stat.cooldown);
+    //}
     private void TryCastSelectedMagic()
     {
         if (SelectedMagicSlot < 0)
@@ -100,31 +140,67 @@ public class GameManager : MonoBehaviour
         if (!IsMagicReady(SelectedMagicSlot))
             return;
 
+        // 런타임 스탯 (서버에서 받은 것)
         CardRuntimeData stat =
             CardStatManager.Instance.GetStat(cardId);
-
         if (stat == null)
+            return;
+
+        CardData card = cardDB.GetCard(cardId);
+        if (card == null)
             return;
 
         Vector2 mouseWorld =
             Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        bool isFieldMagic =
+            card.playerPrefab.GetComponent<IFieldMagic>() != null;
+
         MyCaster.Cast(cardId, mouseWorld);
 
-        Vector2 dir =
-            (mouseWorld - (Vector2)MyCaster.FirePoint.position).normalized;
+        MyCaster.GetComponent<CharacterController2D>()
+            ?.ApplyCastLock(250);
 
-        PKT_CAST_MAGIC pkt = new PKT_CAST_MAGIC
+        if (isFieldMagic)
         {
-            cardId = cardId,
-            dirX = dir.x,
-            dirY = dir.y
-        };
+            Transform myAnchor =
+                FindFirstObjectByType<CharacterController2D>()?.transform;
 
-        network.SendPacket(
-            PacketType.CastMagic,
-            NetworkConnector.StructToBytes(pkt)
-        );
+            if (myAnchor == null)
+                return;
+
+            Vector2 local =
+                mouseWorld - (Vector2)myAnchor.position;
+
+            PKT_CAST_FIELD_MAGIC pkt = new PKT_CAST_FIELD_MAGIC
+            {
+                cardId = cardId,
+                localX = local.x,
+                localY = local.y
+            };
+
+            network.SendPacket(
+                PacketType.CastFieldMagic,
+                NetworkConnector.StructToBytes(pkt)
+            );
+        }
+        else
+        {
+            Vector2 dir =
+                (mouseWorld - (Vector2)MyCaster.FirePoint.position).normalized;
+
+            PKT_CAST_MAGIC pkt = new PKT_CAST_MAGIC
+            {
+                cardId = cardId,
+                dirX = dir.x,
+                dirY = dir.y
+            };
+
+            network.SendPacket(
+                PacketType.CastMagic,
+                NetworkConnector.StructToBytes(pkt)
+            );
+        }
 
         StartCooldown(SelectedMagicSlot, stat.cooldown);
     }
@@ -156,9 +232,7 @@ public class GameManager : MonoBehaviour
         return stat != null ? stat.cooldown : 0f;
     }
 
-    // =============================
     // Packet Register
-    // =============================
     private void RegisterPacketHandlers()
     {
         if (network == null) return;
@@ -168,6 +242,8 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Register(PacketType.Defeat, OnDefeat);
 
         network.Dispatcher.Register(PacketType.SpawnMagic, OnSpawnMagic);
+        network.Dispatcher.Register(PacketType.SpawnFieldMagic, OnSpawnFieldMagic);
+
         network.Dispatcher.Register(PacketType.ResponseUserMagic, OnReceiveUserMagic);
         network.Dispatcher.Register(PacketType.ResponseHP, OnReceiveHP);
         network.Dispatcher.Register(PacketType.ResponseMagicDetail, OnReceiveMagicDetail);
@@ -187,9 +263,7 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Unregister(PacketType.PKT_RES_MAGIC_DETAIL, OnReceiveMagicDetail);
     }
 
-    // =============================
     // HP
-    // =============================
     private void RequestHP()
     {
         network.SendPacket(PacketType.RequestHP, System.Array.Empty<byte>());
@@ -202,10 +276,7 @@ public class GameManager : MonoBehaviour
 
         GameUIController.Instance?.UpdateHP(pkt.currentHp, pkt.maxHp);
     }
-
-    // =============================
     // User Magic
-    // =============================
     private void RequestUserMagic()
     {
         network.SendPacket(PacketType.RequestUserMagic, System.Array.Empty<byte>());
@@ -257,9 +328,7 @@ public class GameManager : MonoBehaviour
         CardStatManager.Instance.SetStat(runtime);
     }
 
-    // =============================
     // Enemy Magic Spawn
-    // =============================
     private void OnSpawnMagic(byte[] body)
     {
         PKT_SPAWN_MAGIC pkt =
@@ -320,9 +389,7 @@ public class GameManager : MonoBehaviour
         );
     }
 
-    // =============================
     // Result
-    // =============================
     private void OnDie(byte[] body)
     {
         PKT_DIE pkt =
@@ -353,4 +420,77 @@ public class GameManager : MonoBehaviour
     {
         GameUIController.Instance?.ShowDefeatUI();
     }
+
+    private void OnSpawnFieldMagic(byte[] body)
+    {
+        PKT_SPAWN_FIELD_MAGIC pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_SPAWN_FIELD_MAGIC>(body);
+
+        string casterId =
+            pkt.casterId.TrimEnd('\0', ' ');
+
+        // 내가 시전한 건 이미 로컬에서 생성했으므로 무시
+        if (casterId == MyUserId)
+            return;
+
+        CardData card = cardDB.GetCard(pkt.cardId);
+        if (card == null)
+            return;
+
+        // 상대 캐릭터 찾기
+        CharacterIdentity enemy =
+            FindObjectsByType<CharacterIdentity>(FindObjectsSortMode.None)
+            .FirstOrDefault(x => x.UserId == casterId);
+
+        if (enemy == null)
+            return;
+
+        EnemyController enemyCtrl =
+            enemy.GetComponent<EnemyController>();
+
+        if (enemyCtrl == null)
+            return;
+
+        Vector3 worldPos;
+        if (enemyCtrl.enemySide == TeamSide.Top)
+        {
+            worldPos = enemyCtrl.transform.position +
+                       new Vector3(-pkt.localX, -pkt.localY, 0f);
+        }
+        else
+        {
+            worldPos = enemyCtrl.transform.position +
+                       new Vector3(pkt.localX, pkt.localY, 0f);
+        }
+
+        GameObject obj = Instantiate(
+            card.playerPrefab,
+            worldPos,
+            Quaternion.identity
+        );
+
+        MagicProjectile proj =
+            obj.GetComponent<MagicProjectile>();
+
+        if (proj == null)
+        {
+            Destroy(obj);
+            return;
+        }
+
+        proj.Init(
+            caster: enemy.gameObject,
+            dir: Vector2.zero,
+            cardData: card,
+            runtimeData: new CardRuntimeData
+            {
+                ID = pkt.cardId,
+                attack = pkt.attack,
+                radius = pkt.radius,
+                duration = pkt.duration,
+                amount = pkt.amount
+            }
+        );
+    }
+
 }

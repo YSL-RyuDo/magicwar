@@ -10,6 +10,7 @@ public class LobbyService : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(576, 864, false);
         network = NetworkConnector.Instance;
         ui = FindFirstObjectByType<LobbyUIController>();
     }

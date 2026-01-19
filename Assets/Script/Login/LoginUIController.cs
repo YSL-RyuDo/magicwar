@@ -59,9 +59,7 @@ public class LoginUIController : MonoBehaviour
         quitButton.onClick.AddListener(QuitGame);
     }
 
-    // =====================
     // Login Enter
-    // =====================
     private void OpenLoginPanel()
     {
         titlePanel.SetActive(false);
@@ -69,9 +67,7 @@ public class LoginUIController : MonoBehaviour
         messageText.text = "Please enter your account information.";
     }
 
-    // =====================
     // Mode 설정
-    // =====================
     private void SetLoginMode()
     {
         signupMode = false;
@@ -86,9 +82,7 @@ public class LoginUIController : MonoBehaviour
         messageText.text = "Signup Mode";
     }
 
-    // =====================
     // Submit
-    // =====================
     private void OnSubmit()
     {
         string id = idInput.text.Trim();
@@ -117,9 +111,7 @@ public class LoginUIController : MonoBehaviour
         }
     }
 
-    // =====================
     // 로그인 성공 후 (Service에서 호출)
-    // =====================
     public void OnLoginSuccess()
     {
         loginPanel.SetActive(false);
@@ -131,9 +123,7 @@ public class LoginUIController : MonoBehaviour
         messageText.text = $"Welcome, {SessionData.Nickname}";
     }
 
-    // =====================
     // Game Enter
-    // =====================
     private void EnterGame()
     {
         SceneManager.LoadScene("LobbyScene");
@@ -144,9 +134,7 @@ public class LoginUIController : MonoBehaviour
         messageText.text = msg;
     }
 
-    // =====================
     // Quit
-    // =====================
     private void QuitGame()
     {
         Application.Quit();

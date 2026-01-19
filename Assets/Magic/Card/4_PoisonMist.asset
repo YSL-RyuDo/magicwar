@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: PoisonMist
   cardImage: {fileID: -5151557894998527945, guid: 45f0b9b7cdeac244a8dbaeea08f99315, type: 3}
   description: PoisonMist
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  playerPrefab: {fileID: 3031218374546180865, guid: 13832ee845f2c114bb0a26339f264e38, type: 3}
+  enemyPrefab: {fileID: 3031218374546180865, guid: 13832ee845f2c114bb0a26339f264e38, type: 3}
   effects:
   - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}

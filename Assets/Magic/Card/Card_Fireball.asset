@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Card_Fireball
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  ID: 0
+  cardName: Fireball
+  cardImage: {fileID: -8262534425414574923, guid: 6447676e1cccfaa44950127eb1c319a7, type: 3}
+  description: Fireball
+  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}

@@ -16,9 +16,7 @@ public class NetworkConnector : MonoBehaviour
 
     public static NetworkConnector Instance { get; private set; }
 
-    // ==============================
     // Token (Runtime + Inspector)
-    // ==============================
     [Header("Debug (Inspector)")]
     [SerializeField]
     private uint inspectorToken;   // 인스펙터 표시용
@@ -42,9 +40,7 @@ public class NetworkConnector : MonoBehaviour
     private readonly byte[] recvBuffer = new byte[8192];
     private int recvBufferSize = 0;
 
-    // ==============================
     // Unity LifeCycle
-    // ==============================
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -60,8 +56,7 @@ public class NetworkConnector : MonoBehaviour
     private void Start()
     {
         Connect("211.247.47.240", 9000);
-        SendPacket(PacketType.PING, Array.Empty<byte>());
-
+        //SendPacket(PacketType.PING, Array.Empty<byte>());
     }
 
     private void Update()
@@ -72,9 +67,7 @@ public class NetworkConnector : MonoBehaviour
 
     public bool IsConnected => client != null && client.Connected;
 
-    // ==============================
     // CONNECT
-    // ==============================
     public void Connect(string ip, int port)
     {
         try
@@ -99,9 +92,7 @@ public class NetworkConnector : MonoBehaviour
         }
     }
 
-    // ==============================
     // SEND (Raw)
-    // ==============================
     public void SendRaw(byte[] packet)
     {
         if (!IsConnected) return;
@@ -116,10 +107,8 @@ public class NetworkConnector : MonoBehaviour
         }
     }
 
-    // ==============================
     // SEND (Header + Body)
     // Header: [packetId(2)][token(4)][bodySize(2)]
-    // ==============================
     public void SendPacket(PacketType type, byte[] body)
     {
         if (!IsConnected) return;
@@ -152,9 +141,7 @@ public class NetworkConnector : MonoBehaviour
         SendPacket(type, body);
     }
 
-    // ==============================
     // RECEIVE LOOP
-    // ==============================
     private void ReceiveLoop()
     {
         byte[] tempBuffer = new byte[4096];
@@ -229,9 +216,7 @@ public class NetworkConnector : MonoBehaviour
         running = false;
     }
 
-    // ==============================
     // STRUCT 변환
-    // ==============================
     public static T ByteArrayToStructure<T>(byte[] data) where T : struct
     {
         int size = Marshal.SizeOf<T>();

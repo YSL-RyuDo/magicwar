@@ -9,6 +9,12 @@ public class LoadingSystem : MonoBehaviour
 
     [SerializeField] private Button cancelButton;
 
+    void Awake()
+    {
+        Screen.SetResolution(576, 864, false);
+    }
+
+
     private void Start()
     {
         network = FindFirstObjectByType<NetworkConnector>();

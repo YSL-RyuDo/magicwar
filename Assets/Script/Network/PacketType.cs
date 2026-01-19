@@ -34,6 +34,10 @@ public enum PacketType
     SpawnMagic = 31,
     PKT_REQ_MAGIC_DETAIL = 32,
     PKT_RES_MAGIC_DETAIL = 33,
+
+    CastFieldMagic = 40,
+    SpawnFieldMagic = 41,
+
     PKT_STATUS_SLOW = 100,
     PKT_STATUS_STUN = 101,
     PING = 254,

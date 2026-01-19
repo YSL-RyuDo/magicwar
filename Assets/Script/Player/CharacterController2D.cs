@@ -236,4 +236,27 @@ public class CharacterController2D : MonoBehaviour
 
         ApplyStun(pkt.durationMs);
     }
+
+    public void ApplyCastLock(int durationMs)
+    {
+        if (isDead)
+            return;
+
+        StopMoving();              // 즉시 이동 중지
+        rb.velocity = Vector2.zero;
+
+        StartCoroutine(CastLockRoutine(durationMs));
+    }
+
+    private IEnumerator CastLockRoutine(int durationMs)
+    {
+        isStunned = true;
+
+        if (anim != null)
+            anim.SetBool("isRun", false);
+
+        yield return new WaitForSeconds(durationMs / 1000f);
+
+        isStunned = false;
+    }
 }

@@ -34,7 +34,10 @@ public class SettingSystem : MonoBehaviour
     private int pendingCardId = -1;
     private NetworkConnector network;
 
-
+    void Awake()
+    {
+        Screen.SetResolution(576, 864, false);
+    }
     private void Start()
     {
         network = FindFirstObjectByType<NetworkConnector>();
@@ -164,10 +167,7 @@ public class SettingSystem : MonoBehaviour
         magicPanel.SetActive(true);
     }
 
-
-    // -------------------------------
     //  교체 모드
-    // -------------------------------
     public void EnterReplaceMode(int cardId)
     {
         isReplaceMode = true;
@@ -204,9 +204,7 @@ public class SettingSystem : MonoBehaviour
         pendingCardId = -1;
     }
 
-    // -------------------------------
     //  서버 교체 응답
-    // -------------------------------
     private void OnReplaceResult(byte[] data)
     {
         if (data.Length < Marshal.SizeOf<PKT_RES_REPLACE_USER_MAGIC>())
