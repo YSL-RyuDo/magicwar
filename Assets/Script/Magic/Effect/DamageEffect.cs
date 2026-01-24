@@ -11,6 +11,11 @@ public class DamageEffect : MagicEffect
         var identity = target.GetComponent<CharacterIdentity>();
         if (identity == null) return;
 
+        if (identity.UserId == GameManager.Instance.OpponentUserId)
+        {
+            target.GetComponent<EnemyController>()?.PlayHurt();
+        }
+
         DamageRequestPacket pkt = new DamageRequestPacket
         {
             attackerId = SessionData.UserID,

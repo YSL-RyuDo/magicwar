@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: MeteorStrike
   cardImage: {fileID: -4888399323542012093, guid: dfc216dc55f788f4e8f46acc6cbe6799, type: 3}
   description: MeteorStrike
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  playerPrefab: {fileID: 8789084979750176804, guid: 1bc9aac2dec5dd141a0e54137fd9cc33, type: 3}
+  enemyPrefab: {fileID: 8789084979750176804, guid: 1bc9aac2dec5dd141a0e54137fd9cc33, type: 3}
   effects:
   - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}

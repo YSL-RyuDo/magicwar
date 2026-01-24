@@ -23,6 +23,7 @@ public class GameUIController : MonoBehaviour
 
     [SerializeField] private GameObject victoryPanel;
     [SerializeField] private GameObject defeatPanel;
+    private int lastHp = -1;
 
     private void Awake()
     {
@@ -106,10 +107,26 @@ public class GameUIController : MonoBehaviour
 
     public void UpdateHP(int current, int max)
     {
+        // 최초 호출
+        if (lastHp < 0)
+            lastHp = current;
+
+        if (current < lastHp)
+        {
+            CharacterController2D controller =
+                FindFirstObjectByType<CharacterController2D>();
+
+            controller?.PlayHurt();
+        }
+
+        // UI 갱신
         hpSlider.maxValue = max;
         hpSlider.value = current;
         hpText.text = $"{current} / {max}";
+
+        lastHp = current;
     }
+
 
     public void ShowVictoryUI()
     {

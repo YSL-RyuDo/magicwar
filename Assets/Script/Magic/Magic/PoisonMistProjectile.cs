@@ -15,6 +15,11 @@ public class PoisonMistProjectile : FieldMagicBase
         NetworkConnector network = NetworkConnector.Instance;
         if (network == null) return;
 
+        if (target.UserId == GameManager.Instance.OpponentUserId)
+        {
+            target.GetComponent<EnemyController>()?.PlayHurt();
+        }
+
         DamageRequestPacket pkt = new DamageRequestPacket
         {
             attackerId = SessionData.UserID,

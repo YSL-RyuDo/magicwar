@@ -91,6 +91,33 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("isRun", isRun);
     }
 
+    public void PlayAttack()
+    {
+        if (isDead)
+            return;
+
+        if (animator != null)
+        {
+            animator.SetBool("isRun", false);
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("attack");
+        }
+    }
+
+    public void PlayHurt()
+    {
+        if (isDead)
+            return;
+
+        if (animator != null)
+        {
+            animator.SetBool("isRun", false);
+            animator.ResetTrigger("hurt");
+            animator.SetTrigger("hurt");
+        }
+    }
+
+
     public void Die()
     {
         if (isDead)
@@ -103,13 +130,6 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetBool("isRun", false);
             animator.SetTrigger("die");
-            OnDieAnimationEnd();
-            Time.timeScale = 0f;
         }
-    }
-
-    public void OnDieAnimationEnd()
-    {
-        Destroy(gameObject);
     }
 }

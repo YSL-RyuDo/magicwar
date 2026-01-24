@@ -152,6 +152,22 @@ public class CharacterController2D : MonoBehaviour
             anim.SetBool("isRun", false);
     }
 
+    public void PlayAttack()
+    {
+        if (isDead)
+            return;
+
+        StopMoving();
+        rb.velocity = Vector2.zero;
+
+        if (anim != null)
+        {
+            anim.SetBool("isRun", false);
+            anim.ResetTrigger("attack");
+            anim.SetTrigger("attack");
+        }
+    }
+
     public void Die()
     {
         if (isDead) return;
@@ -169,9 +185,6 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
-    // 蝸煎辦 籀葬 (р褕)
-    // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
     public void ApplySlow(float ratio, int durationMs)
     {
         if (slowRoutine != null)
@@ -193,9 +206,6 @@ public class CharacterController2D : MonoBehaviour
         slowRoutine = null;
     }
 
-    // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
-    // 蝶欐 籀葬
-    // 式式式式式式式式式式式式式式式式式式式式式式式式式式式式式
     private void ApplyStun(int durationMs)
     {
         StartCoroutine(StunRoutine(durationMs));
@@ -259,4 +269,20 @@ public class CharacterController2D : MonoBehaviour
 
         isStunned = false;
     }
+
+    public void PlayHurt()
+    {
+        if (isDead)
+            return;
+
+        StopMoving(); // 蜃懊擊 陽 牖除 誇辭
+
+        if (anim != null)
+        {
+            anim.SetBool("isRun", false);
+            anim.ResetTrigger("hurt");
+            anim.SetTrigger("hurt");
+        }
+    }
+
 }

@@ -2,9 +2,11 @@ using UnityEngine;
 
 public abstract class MagicProjectile : MonoBehaviour
 {
-    protected GameObject caster;
+    public GameObject caster;
     protected CardData cardData;
     protected CardRuntimeData runtimeData;
+    public CardRuntimeData RuntimeData => runtimeData;
+    public GameObject Caster => caster;
     protected Vector2 direction;
 
     public virtual void Init(

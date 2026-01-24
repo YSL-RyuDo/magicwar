@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a8f539c53dc7440b48382900bec95f, type: 3}
+  m_Name: 12_MeteorField
+  m_EditorClassIdentifier: 
+  ID: 12
+  cardName: MeteorField
+  cardImage: {fileID: 21300000, guid: 126ff315372e6cf4cbcaf16d67b2c9aa, type: 3}
+  description: MagicWall
+  playerPrefab: {fileID: 110001265717703090, guid: fdbc75ab447b0514db160976e85189a9, type: 3}
+  enemyPrefab: {fileID: 110001265717703090, guid: fdbc75ab447b0514db160976e85189a9, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}

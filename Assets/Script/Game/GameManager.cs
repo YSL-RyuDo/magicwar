@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private NetworkConnector network;
 
     [SerializeField] private CardDatabase cardDB;
+    private int lastEnemyHp = -1;
+    private int lastMyHp = -1;
 
     // Life Cycle
     private void Awake()
@@ -81,53 +83,6 @@ public class GameManager : MonoBehaviour
         SelectMagic(slotIndex);
     }
 
-    // Magic Cast + Cooldown
-    //private void TryCastSelectedMagic()
-    //{
-    //    if (SelectedMagicSlot < 0)
-    //        return;
-
-    //    int cardId = EquippedMagicIds[SelectedMagicSlot];
-    //    if (cardId < 0)
-    //        return;
-
-    //    if (!IsMagicReady(SelectedMagicSlot))
-    //        return;
-
-    //    CardRuntimeData stat =
-    //        CardStatManager.Instance.GetStat(cardId);
-
-    //    if (stat == null)
-    //        return;
-
-    //    Vector2 mouseWorld =
-    //        Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-    //    MyCaster.Cast(cardId, mouseWorld);
-
-    //    var controller = MyCaster.GetComponent<CharacterController2D>();
-    //    if (controller != null)
-    //    {
-    //        controller.ApplyCastLock(250); // 0.25초
-    //    }
-
-    //    Vector2 dir =
-    //        (mouseWorld - (Vector2)MyCaster.FirePoint.position).normalized;
-
-    //    PKT_CAST_MAGIC pkt = new PKT_CAST_MAGIC
-    //    {
-    //        cardId = cardId,
-    //        dirX = dir.x,
-    //        dirY = dir.y
-    //    };
-
-    //    network.SendPacket(
-    //        PacketType.CastMagic,
-    //        NetworkConnector.StructToBytes(pkt)
-    //    );
-
-    //    StartCooldown(SelectedMagicSlot, stat.cooldown);
-    //}
     private void TryCastSelectedMagic()
     {
         if (SelectedMagicSlot < 0)
@@ -247,6 +202,8 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Register(PacketType.ResponseUserMagic, OnReceiveUserMagic);
         network.Dispatcher.Register(PacketType.ResponseHP, OnReceiveHP);
         network.Dispatcher.Register(PacketType.ResponseMagicDetail, OnReceiveMagicDetail);
+        network.Dispatcher.Register(PacketType.PKT_REMOVE_PROJECTILE,OnRemoveProjectile);
+
     }
 
     private void OnDestroy()
@@ -261,6 +218,7 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Unregister(PacketType.ResponseUserMagic, OnReceiveUserMagic);
         network.Dispatcher.Unregister(PacketType.ResponseHP, OnReceiveHP);
         network.Dispatcher.Unregister(PacketType.PKT_RES_MAGIC_DETAIL, OnReceiveMagicDetail);
+        network.Dispatcher.Unregister(PacketType.PKT_REMOVE_PROJECTILE, OnRemoveProjectile);
     }
 
     // HP
@@ -274,8 +232,31 @@ public class GameManager : MonoBehaviour
         PKT_RES_HP_STRUCT pkt =
             NetworkConnector.ByteArrayToStructure<PKT_RES_HP_STRUCT>(body);
 
-        GameUIController.Instance?.UpdateHP(pkt.currentHp, pkt.maxHp);
+        string id = pkt.userId.TrimEnd('\0', ' ');
+
+        if (id == MyUserId)
+        {
+            GameUIController.Instance?.UpdateHP(pkt.currentHp, pkt.maxHp);
+
+            if (pkt.currentHp < lastMyHp)
+                MyCaster.GetComponent<Animator>()?.SetTrigger("hurt");
+
+            lastMyHp = pkt.currentHp;
+        }
+        else if (id == OpponentUserId)
+        {
+            var enemy =
+                FindObjectsByType<CharacterIdentity>(FindObjectsSortMode.None)
+                .FirstOrDefault(x => x.UserId == id);
+
+            if (enemy != null && pkt.currentHp < lastEnemyHp)
+                enemy.GetComponent<EnemyController>()?.PlayHurt();
+
+            lastEnemyHp = pkt.currentHp;
+        }
     }
+
+
     // User Magic
     private void RequestUserMagic()
     {
@@ -336,12 +317,8 @@ public class GameManager : MonoBehaviour
 
         string casterId = pkt.casterId.TrimEnd('\0', ' ');
 
-        // 내가 쏜 마법은 로컬에서 이미 생성했으므로 무시
+        // 내가 쏜 마법은 무시
         if (casterId == MyUserId)
-            return;
-
-        CardData card = cardDB.GetCard(pkt.cardId);
-        if (card == null)
             return;
 
         CharacterIdentity enemy =
@@ -351,29 +328,29 @@ public class GameManager : MonoBehaviour
         if (enemy == null)
             return;
 
+        enemy.GetComponent<EnemyController>()?.PlayAttack();
+
+        CardData card = cardDB.GetCard(pkt.cardId);
+        if (card == null)
+            return;
+
         MagicCaster caster = enemy.GetComponent<MagicCaster>();
         if (caster == null)
             return;
 
         GameObject projObj = Instantiate(
-            card.playerPrefab,               // 카드별 프리팹
+            card.playerPrefab,
             caster.FirePoint.position,
             Quaternion.identity
         );
 
-        MagicProjectile proj =
-            projObj.GetComponent<MagicProjectile>();
-
+        MagicProjectile proj = projObj.GetComponent<MagicProjectile>();
         if (proj == null)
         {
-            Debug.LogError(
-                $"[SpawnMagic] MagicProjectile not found on prefab {card.playerPrefab.name}"
-            );
             Destroy(projObj);
             return;
         }
 
-        // 방향은 서버 기준 그대로 사용
         Vector2 dir = new Vector2(-pkt.dirX, -pkt.dirY).normalized;
 
         proj.Init(
@@ -423,33 +400,64 @@ public class GameManager : MonoBehaviour
 
     private void OnSpawnFieldMagic(byte[] body)
     {
+        Debug.Log("[필드 생성] 패킷 수신 시작");
+
+        if (body == null || body.Length == 0)
+        {
+            Debug.LogError("[필드 생성] 패킷 바디가 비어있음");
+            return;
+        }
+
         PKT_SPAWN_FIELD_MAGIC pkt =
             NetworkConnector.ByteArrayToStructure<PKT_SPAWN_FIELD_MAGIC>(body);
 
-        string casterId =
-            pkt.casterId.TrimEnd('\0', ' ');
+        string casterId = pkt.casterId.TrimEnd('\0', ' ');
+        Debug.Log($"[필드 생성] casterId = {casterId}");
 
-        // 내가 시전한 건 이미 로컬에서 생성했으므로 무시
+        Debug.Log($"[필드 생성] 내 ID = {MyUserId}");
+
         if (casterId == MyUserId)
+        {
+            Debug.Log("[필드 생성] 자기 자신 패킷 → 현재 코드에서 무시됨");
             return;
+        }
 
-        CardData card = cardDB.GetCard(pkt.cardId);
-        if (card == null)
+        Debug.Log($"[필드 생성] cardId = {pkt.cardId}");
+
+        CardData fieldCard = cardDB.GetCard(pkt.cardId);
+        if (fieldCard == null)
+        {
+            Debug.LogError("[필드 생성] CardData를 찾지 못함");
             return;
+        }
 
-        // 상대 캐릭터 찾기
+        Debug.Log($"[필드 생성] 카드 이름 = {fieldCard.name}");
+        Debug.Log($"[필드 생성] 프리팹 = {fieldCard.playerPrefab?.name}");
+
         CharacterIdentity enemy =
             FindObjectsByType<CharacterIdentity>(FindObjectsSortMode.None)
             .FirstOrDefault(x => x.UserId == casterId);
 
         if (enemy == null)
+        {
+            Debug.LogError("[필드 생성] CharacterIdentity(적)을 찾지 못함");
             return;
+        }
 
-        EnemyController enemyCtrl =
-            enemy.GetComponent<EnemyController>();
+        Debug.Log($"[필드 생성] 적 오브젝트 = {enemy.gameObject.name}");
 
+        EnemyController enemyCtrl = enemy.GetComponent<EnemyController>();
         if (enemyCtrl == null)
+        {
+            Debug.LogError("[필드 생성] EnemyController가 없음");
             return;
+        }
+
+        Debug.Log($"[필드 생성] 적 진영 = {enemyCtrl.enemySide}");
+
+        Debug.Log(
+            $"[필드 생성] local 좌표 = ({pkt.localX}, {pkt.localY})"
+        );
 
         Vector3 worldPos;
         if (enemyCtrl.enemySide == TeamSide.Top)
@@ -463,25 +471,32 @@ public class GameManager : MonoBehaviour
                        new Vector3(pkt.localX, pkt.localY, 0f);
         }
 
+        Debug.Log(
+            $"[필드 생성] 월드 좌표 = {worldPos}"
+        );
+
         GameObject obj = Instantiate(
-            card.playerPrefab,
+            fieldCard.playerPrefab,
             worldPos,
             Quaternion.identity
         );
 
-        MagicProjectile proj =
-            obj.GetComponent<MagicProjectile>();
+        Debug.Log($"[필드 생성] 프리팹 인스턴스 생성됨 = {obj.name}");
 
+        MagicProjectile proj = obj.GetComponent<MagicProjectile>();
         if (proj == null)
         {
+            Debug.LogError("[필드 생성] MagicProjectile 컴포넌트가 없음");
             Destroy(obj);
             return;
         }
 
+        Debug.Log("[필드 생성] MagicProjectile Init 호출");
+
         proj.Init(
             caster: enemy.gameObject,
             dir: Vector2.zero,
-            cardData: card,
+            cardData: fieldCard,
             runtimeData: new CardRuntimeData
             {
                 ID = pkt.cardId,
@@ -491,6 +506,73 @@ public class GameManager : MonoBehaviour
                 amount = pkt.amount
             }
         );
+
+        Debug.Log("[필드 생성] 필드 생성 완료");
+    }
+
+    public void OnMeteorArrived(int cardId, Vector2 worldPos, GameObject casterObj)
+    {
+        int fieldCardId = cardId;
+        if (cardId == 5)          // MeteorStrike
+            fieldCardId = 12;
+
+        CardData fieldCard = cardDB.GetCard(fieldCardId);
+        if (fieldCard == null)
+            return;
+
+        GameObject fieldObj = Instantiate(
+        fieldCard.playerPrefab,   // ← MeteorStrikeField 프리팹
+        worldPos,
+        Quaternion.identity
+    );
+
+        MagicProjectile fieldProj = fieldObj.GetComponent<MagicProjectile>();
+        if (fieldProj != null)
+        {
+            fieldProj.Init(
+                casterObj,
+                Vector2.zero,
+                fieldCard,
+                CardStatManager.Instance.GetStat(cardId)
+            );
+        }
+
+        Vector2 casterPos = casterObj.transform.position;
+        Vector2 local = worldPos - casterPos;
+
+        PKT_CAST_FIELD_MAGIC pkt = new PKT_CAST_FIELD_MAGIC
+        {
+            cardId = cardId,
+            localX = local.x,
+            localY = local.y
+        };
+
+        network.SendPacket(
+            PacketType.CastFieldMagic,
+            NetworkConnector.StructToBytes(pkt)
+        );
+    }
+
+    private void OnRemoveProjectile(byte[] body)
+    {
+        PKT_REMOVE_PROJECTILE pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_REMOVE_PROJECTILE>(body);
+
+        string casterId = pkt.casterId.TrimEnd('\0', ' ');
+
+        foreach (var proj in
+            FindObjectsByType<MagicProjectile>(FindObjectsSortMode.None))
+        {
+            var id = proj.Caster
+                ?.GetComponent<CharacterIdentity>()
+                ?.UserId;
+
+            if (id == casterId &&
+                proj.RuntimeData.ID == pkt.cardId)
+            {
+                Destroy(proj.gameObject);
+            }
+        }
     }
 
 }

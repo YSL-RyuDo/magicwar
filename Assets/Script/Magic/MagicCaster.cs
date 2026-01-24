@@ -5,7 +5,13 @@ public class MagicCaster : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private CardDatabase cardDB;
 
+    private CharacterController2D controller;
     public Transform FirePoint => firePoint;
+
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController2D>();
+    }
 
     public void Cast(int cardId, Vector2 mouseWorld)
     {
@@ -18,7 +24,13 @@ public class MagicCaster : MonoBehaviour
         if (stat == null)
             return;
 
+        controller?.PlayAttack();
+
+        // MeteorStrike는 무조건 투사체
+        bool isMeteor = card.ID == 5;
+
         bool isFieldMagic =
+            !isMeteor &&
             card.playerPrefab.GetComponent<IFieldMagic>() != null;
 
         if (isFieldMagic)
@@ -27,10 +39,11 @@ public class MagicCaster : MonoBehaviour
             CastProjectile(card, stat, mouseWorld);
     }
 
+
     private void CastProjectile(
-        CardData card,
-        CardRuntimeData stat,
-        Vector2 mouseWorld)
+    CardData card,
+    CardRuntimeData stat,
+    Vector2 mouseWorld)
     {
         Vector2 dir =
             (mouseWorld - (Vector2)firePoint.position).normalized;
@@ -57,11 +70,17 @@ public class MagicCaster : MonoBehaviour
                 ID = card.ID,
                 attack = stat.attack,
                 speed = stat.speed,
-                radius = stat.radius, 
+                radius = stat.radius,
                 duration = stat.duration,
                 amount = stat.amount
             }
         );
+
+        MeteorProjectile meteor = proj as MeteorProjectile;
+        if (meteor != null)
+        {
+            meteor.SetTarget(mouseWorld);
+        }
     }
 
     private void CastField(

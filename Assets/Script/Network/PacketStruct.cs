@@ -139,6 +139,9 @@ public struct PKT_MOVE_STRUCT
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct PKT_RES_HP_STRUCT
 {
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+
     public int currentHp;
     public int maxHp;
 }
@@ -256,4 +259,13 @@ public struct PKT_STATUS_STUN_STRUCT
     public string targetId;
 
     public int durationMs;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+public struct PKT_REMOVE_PROJECTILE
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string casterId;
+
+    public int cardId;
 }
