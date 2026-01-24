@@ -10,7 +10,7 @@ public class CharacterController2D : MonoBehaviour
     public float moveSpeed = 5f;
     private float originalMoveSpeed;
 
-    [Header("Field Anchor (ÇÊ¼ö)")]
+    [Header("Field Anchor")]
     [SerializeField] private Transform myFieldAnchor;
 
     [Header("Tags")]
@@ -23,17 +23,21 @@ public class CharacterController2D : MonoBehaviour
     private bool isMoving;
     private bool isDead = false;
     private bool isStunned = false;
+    private bool isInvisible = false;
 
     private Rigidbody2D rb;
     private Animator anim;
 
-    // ¦¡¦¡¦¡¦¡¦¡ ³×Æ®¿öÅ© Àü¼Û Á¦¾î ¦¡¦¡¦¡¦¡¦¡
+    // ë„¤íŠ¸ì›Œí¬ ì´ë™ ì „ì†¡
     private float sendInterval = 0.1f;
     private float sendTimer = 0f;
     private Vector2 lastSentLocalPos;
 
-    // ½½·Î¿ì ÄÚ·çÆ¾
+    // ìƒíƒœ ì½”ë£¨í‹´
     private Coroutine slowRoutine;
+    private Coroutine stunRoutine;
+    private Coroutine castLockRoutine;
+    private Coroutine invisRoutine;
 
     private void Awake()
     {
@@ -44,7 +48,6 @@ public class CharacterController2D : MonoBehaviour
 
         anim = GetComponentInChildren<Animator>();
 
-        // ¿ø·¡ ÀÌµ¿¼Óµµ ÀúÀå
         originalMoveSpeed = moveSpeed;
     }
 
@@ -56,6 +59,15 @@ public class CharacterController2D : MonoBehaviour
         {
             network.Dispatcher.Register(PacketType.PKT_STATUS_SLOW, OnSlowReceived);
             network.Dispatcher.Register(PacketType.PKT_STATUS_STUN, OnStunReceived);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (network != null)
+        {
+            network.Dispatcher.Unregister(PacketType.PKT_STATUS_SLOW, OnSlowReceived);
+            network.Dispatcher.Unregister(PacketType.PKT_STATUS_STUN, OnStunReceived);
         }
     }
 
@@ -112,9 +124,7 @@ public class CharacterController2D : MonoBehaviour
         }
 
         if (Vector2.Distance(rb.position, targetPosition) < 0.05f)
-        {
             StopMoving();
-        }
     }
 
     private void SendMove(Vector2 localPos)
@@ -152,6 +162,9 @@ public class CharacterController2D : MonoBehaviour
             anim.SetBool("isRun", false);
     }
 
+    // =====================
+    // Combat / States
+    // =====================
     public void PlayAttack()
     {
         if (isDead)
@@ -168,9 +181,25 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public void PlayHurt()
+    {
+        if (isDead)
+            return;
+
+        StopMoving();
+
+        if (anim != null)
+        {
+            anim.SetBool("isRun", false);
+            anim.ResetTrigger("hurt");
+            anim.SetTrigger("hurt");
+        }
+    }
+
     public void Die()
     {
-        if (isDead) return;
+        if (isDead)
+            return;
 
         isDead = true;
         isMoving = false;
@@ -185,6 +214,9 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    // =====================
+    // Slow / Stun
+    // =====================
     public void ApplySlow(float ratio, int durationMs)
     {
         if (slowRoutine != null)
@@ -196,31 +228,33 @@ public class CharacterController2D : MonoBehaviour
     private IEnumerator SlowRoutine(float ratio, int durationMs)
     {
         moveSpeed = originalMoveSpeed * ratio;
-        Debug.Log($"[SLOW APPLY] moveSpeed={moveSpeed}");
-
         yield return new WaitForSeconds(durationMs / 1000f);
-
         moveSpeed = originalMoveSpeed;
-        Debug.Log($"[SLOW END] moveSpeed restored={moveSpeed}");
-
         slowRoutine = null;
     }
 
     private void ApplyStun(int durationMs)
     {
-        StartCoroutine(StunRoutine(durationMs));
+        if (stunRoutine != null)
+            StopCoroutine(stunRoutine);
+
+        stunRoutine = StartCoroutine(StunRoutine(durationMs));
     }
 
     private IEnumerator StunRoutine(int durationMs)
     {
         isStunned = true;
+        StopMoving();
+
+        if (anim != null)
+            anim.SetBool("isRun", false);
+
         yield return new WaitForSeconds(durationMs / 1000f);
+
         isStunned = false;
+        stunRoutine = null;
     }
 
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
-    // ³×Æ®¿öÅ© ¼ö½Å
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
     private void OnSlowReceived(byte[] body)
     {
         PKT_STATUS_SLOW_STRUCT pkt =
@@ -247,42 +281,62 @@ public class CharacterController2D : MonoBehaviour
         ApplyStun(pkt.durationMs);
     }
 
+    // =====================
+    // Cast Lock
+    // =====================
     public void ApplyCastLock(int durationMs)
     {
         if (isDead)
             return;
 
-        StopMoving();              // Áï½Ã ÀÌµ¿ ÁßÁö
-        rb.velocity = Vector2.zero;
+        if (castLockRoutine != null)
+            StopCoroutine(castLockRoutine);
 
-        StartCoroutine(CastLockRoutine(durationMs));
+        castLockRoutine = StartCoroutine(CastLockRoutine(durationMs));
     }
 
     private IEnumerator CastLockRoutine(int durationMs)
     {
         isStunned = true;
-
-        if (anim != null)
-            anim.SetBool("isRun", false);
+        StopMoving();
 
         yield return new WaitForSeconds(durationMs / 1000f);
 
         isStunned = false;
+        castLockRoutine = null;
     }
 
-    public void PlayHurt()
+    public void ApplyInvisibility(float duration)
     {
-        if (isDead)
+        if (invisRoutine != null)
+            StopCoroutine(invisRoutine);
+
+        invisRoutine = StartCoroutine(InvisibilityRoutine(duration));
+    }
+
+    private IEnumerator InvisibilityRoutine(float duration)
+    {
+        SetInvisible(true);
+
+        if (duration > 0f)
+            yield return new WaitForSeconds(duration);
+
+        SetInvisible(false);
+        invisRoutine = null;
+    }
+
+    private void SetInvisible(bool value)
+    {
+        if (visualRoot == null)
             return;
 
-        StopMoving(); // ¸Â¾ÒÀ» ¶§ ¼ø°£ ¸ØÃã
+        float alpha = value ? 0.3f : 1f;
 
-        if (anim != null)
+        foreach (var sr in visualRoot.GetComponentsInChildren<SpriteRenderer>())
         {
-            anim.SetBool("isRun", false);
-            anim.ResetTrigger("hurt");
-            anim.SetTrigger("hurt");
+            Color c = sr.color;
+            c.a = alpha;
+            sr.color = c;
         }
     }
-
 }

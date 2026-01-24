@@ -27,7 +27,9 @@ public class EnemyService : MonoBehaviour
     {
         Debug.Log("[EnemyService] OnDestroy - Unregister Move Packet");
         if (network != null)
+        {
             network.Dispatcher.Unregister(PacketType.Move, OnEnemyMoveReceived);
+        }
     }
 
     // 서버 → 상대 이동 패킷 수신
@@ -46,10 +48,6 @@ public class EnemyService : MonoBehaviour
 
         PKT_MOVE_STRUCT pkt =
             NetworkConnector.ByteArrayToStructure<PKT_MOVE_STRUCT>(body);
-
-        //Debug.Log(
-        //    $"[EnemyService] Parsed Move Packet | userId={pkt.userId} x={pkt.x} y={pkt.y}"
-        //);
 
         if (enemy == null)
         {

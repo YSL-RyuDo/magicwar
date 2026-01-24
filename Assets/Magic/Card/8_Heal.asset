@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Heal
   cardImage: {fileID: -2793494068267466581, guid: 139f11fd9e23bcb4aa79466c58d764aa, type: 3}
   description: Heal
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  playerPrefab: {fileID: 1282694417286988083, guid: 9f2af1037c04a7d4296d43fcce2c8454, type: 3}
+  enemyPrefab: {fileID: 1282694417286988083, guid: 9f2af1037c04a7d4296d43fcce2c8454, type: 3}
   effects:
-  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}
+  - {fileID: 11400000, guid: e09eac44b1988e145a56eb50e362dacc, type: 2}

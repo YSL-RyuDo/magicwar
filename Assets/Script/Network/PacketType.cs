@@ -38,6 +38,8 @@ public enum PacketType
     CastFieldMagic = 40,
     SpawnFieldMagic = 41,
     PKT_REMOVE_PROJECTILE = 42,
+    PKT_CAST_SELF_MAGIC = 43,
+    PKT_STATUS_INVISIBILITY = 44,
 
     PKT_STATUS_SLOW = 100,
     PKT_STATUS_STUN = 101,

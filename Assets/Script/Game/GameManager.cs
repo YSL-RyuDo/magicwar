@@ -1,5 +1,7 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
+using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Runtime Data")]
     public int[] EquippedMagicIds = new int[4] { -1, -1, -1, -1 };
 
-    // ½½·Ôº° ÄğÅ¸ÀÓ Á¾·á ½Ã°¢
+    // ìŠ¬ë¡¯ë³„ ì¿¨íƒ€ì„ ì¢…ë£Œ ì‹œê°
     private float[] magicCooldownEndTime = new float[4];
 
     public int SelectedMagicSlot { get; private set; } = -1;
@@ -22,7 +24,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CardDatabase cardDB;
     private int lastEnemyHp = -1;
     private int lastMyHp = -1;
-
     // Life Cycle
     private void Awake()
     {
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (!IsMagicReady(SelectedMagicSlot))
             return;
 
-        // ·±Å¸ÀÓ ½ºÅÈ (¼­¹ö¿¡¼­ ¹ŞÀº °Í)
+        // ëŸ°íƒ€ì„ ìŠ¤íƒ¯ (ì„œë²„ì—ì„œ ë°›ì€ ê²ƒ)
         CardRuntimeData stat =
             CardStatManager.Instance.GetStat(cardId);
         if (stat == null)
@@ -104,6 +105,66 @@ public class GameManager : MonoBehaviour
         CardData card = cardDB.GetCard(cardId);
         if (card == null)
             return;
+
+        if (cardId == 7)
+        {
+            MyCaster.GetComponent<CharacterController2D>()
+            ?.PlayAttack();
+
+            // ì„œë²„ì— Self Magic ìš”ì²­
+            PKT_CAST_SELF_MAGIC pkt = new PKT_CAST_SELF_MAGIC
+            {
+                cardId = 7
+            };
+
+            network.SendPacket(
+                PacketType.PKT_CAST_SELF_MAGIC,
+                NetworkConnector.StructToBytes(pkt)
+            );
+
+            StartCooldown(SelectedMagicSlot, stat.cooldown);
+            return; // â­ ì—¬ê¸°ì„œ ë
+        }
+
+        if (cardId == 8) // Heal
+        {
+            MyCaster.GetComponent<CharacterController2D>()
+            ?.PlayAttack();
+
+            if (card != null && card.playerPrefab != null)
+            {
+                GameObject healObj = Instantiate(
+                    card.playerPrefab,
+                    MyCaster.transform.position,
+                    Quaternion.identity
+                );
+
+                // MagicProjectile ìƒì†ì´ë¯€ë¡œ Init í˜¸ì¶œ
+                var proj = healObj.GetComponent<MagicProjectile>();
+                if (proj != null)
+                {
+                    proj.Init(
+                        caster: MyCaster.gameObject,
+                        dir: Vector2.zero,
+                        cardData: card,
+                        runtimeData: CardStatManager.Instance.GetStat(cardId)
+                    );
+                }
+            }
+
+            PKT_CAST_SELF_MAGIC pkt = new PKT_CAST_SELF_MAGIC
+            {
+                cardId = 8
+            };
+
+            network.SendPacket(
+                PacketType.PKT_CAST_SELF_MAGIC,
+                NetworkConnector.StructToBytes(pkt)
+            );
+
+            StartCooldown(SelectedMagicSlot, stat.cooldown);
+            return;
+        }
 
         Vector2 mouseWorld =
             Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -170,7 +231,7 @@ public class GameManager : MonoBehaviour
         magicCooldownEndTime[slot] = Time.time + cooldown;
     }
 
-    // UI¿¡¼­ Á÷Á¢ È£ÃâÇÏ´Â ÇÔ¼öµé
+    // UIì—ì„œ ì§ì ‘ í˜¸ì¶œí•˜ëŠ” í•¨ìˆ˜ë“¤
     public float GetCooldownRemain(int slot)
     {
         return Mathf.Max(0f, magicCooldownEndTime[slot] - Time.time);
@@ -203,7 +264,7 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Register(PacketType.ResponseHP, OnReceiveHP);
         network.Dispatcher.Register(PacketType.ResponseMagicDetail, OnReceiveMagicDetail);
         network.Dispatcher.Register(PacketType.PKT_REMOVE_PROJECTILE,OnRemoveProjectile);
-
+        network.Dispatcher.Register(PacketType.PKT_STATUS_INVISIBILITY,OnInvisibility);
     }
 
     private void OnDestroy()
@@ -219,6 +280,7 @@ public class GameManager : MonoBehaviour
         network.Dispatcher.Unregister(PacketType.ResponseHP, OnReceiveHP);
         network.Dispatcher.Unregister(PacketType.PKT_RES_MAGIC_DETAIL, OnReceiveMagicDetail);
         network.Dispatcher.Unregister(PacketType.PKT_REMOVE_PROJECTILE, OnRemoveProjectile);
+        network.Dispatcher.Unregister(PacketType.PKT_STATUS_INVISIBILITY, OnInvisibility);
     }
 
     // HP
@@ -317,7 +379,7 @@ public class GameManager : MonoBehaviour
 
         string casterId = pkt.casterId.TrimEnd('\0', ' ');
 
-        // ³»°¡ ½ğ ¸¶¹ıÀº ¹«½Ã
+        // ë‚´ê°€ ìœ ë§ˆë²•ì€ ë¬´ì‹œ
         if (casterId == MyUserId)
             return;
 
@@ -400,11 +462,11 @@ public class GameManager : MonoBehaviour
 
     private void OnSpawnFieldMagic(byte[] body)
     {
-        Debug.Log("[ÇÊµå »ı¼º] ÆĞÅ¶ ¼ö½Å ½ÃÀÛ");
+        Debug.Log("[í•„ë“œ ìƒì„±] íŒ¨í‚· ìˆ˜ì‹  ì‹œì‘");
 
         if (body == null || body.Length == 0)
         {
-            Debug.LogError("[ÇÊµå »ı¼º] ÆĞÅ¶ ¹Ùµğ°¡ ºñ¾îÀÖÀ½");
+            Debug.LogError("[í•„ë“œ ìƒì„±] íŒ¨í‚· ë°”ë””ê°€ ë¹„ì–´ìˆìŒ");
             return;
         }
 
@@ -412,27 +474,27 @@ public class GameManager : MonoBehaviour
             NetworkConnector.ByteArrayToStructure<PKT_SPAWN_FIELD_MAGIC>(body);
 
         string casterId = pkt.casterId.TrimEnd('\0', ' ');
-        Debug.Log($"[ÇÊµå »ı¼º] casterId = {casterId}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] casterId = {casterId}");
 
-        Debug.Log($"[ÇÊµå »ı¼º] ³» ID = {MyUserId}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] ë‚´ ID = {MyUserId}");
 
         if (casterId == MyUserId)
         {
-            Debug.Log("[ÇÊµå »ı¼º] ÀÚ±â ÀÚ½Å ÆĞÅ¶ ¡æ ÇöÀç ÄÚµå¿¡¼­ ¹«½ÃµÊ");
+            Debug.Log("[í•„ë“œ ìƒì„±] ìê¸° ìì‹  íŒ¨í‚· â†’ í˜„ì¬ ì½”ë“œì—ì„œ ë¬´ì‹œë¨");
             return;
         }
 
-        Debug.Log($"[ÇÊµå »ı¼º] cardId = {pkt.cardId}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] cardId = {pkt.cardId}");
 
         CardData fieldCard = cardDB.GetCard(pkt.cardId);
         if (fieldCard == null)
         {
-            Debug.LogError("[ÇÊµå »ı¼º] CardData¸¦ Ã£Áö ¸øÇÔ");
+            Debug.LogError("[í•„ë“œ ìƒì„±] CardDataë¥¼ ì°¾ì§€ ëª»í•¨");
             return;
         }
 
-        Debug.Log($"[ÇÊµå »ı¼º] Ä«µå ÀÌ¸§ = {fieldCard.name}");
-        Debug.Log($"[ÇÊµå »ı¼º] ÇÁ¸®ÆÕ = {fieldCard.playerPrefab?.name}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] ì¹´ë“œ ì´ë¦„ = {fieldCard.name}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] í”„ë¦¬íŒ¹ = {fieldCard.playerPrefab?.name}");
 
         CharacterIdentity enemy =
             FindObjectsByType<CharacterIdentity>(FindObjectsSortMode.None)
@@ -440,23 +502,23 @@ public class GameManager : MonoBehaviour
 
         if (enemy == null)
         {
-            Debug.LogError("[ÇÊµå »ı¼º] CharacterIdentity(Àû)À» Ã£Áö ¸øÇÔ");
+            Debug.LogError("[í•„ë“œ ìƒì„±] CharacterIdentity(ì )ì„ ì°¾ì§€ ëª»í•¨");
             return;
         }
 
-        Debug.Log($"[ÇÊµå »ı¼º] Àû ¿ÀºêÁ§Æ® = {enemy.gameObject.name}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] ì  ì˜¤ë¸Œì íŠ¸ = {enemy.gameObject.name}");
 
         EnemyController enemyCtrl = enemy.GetComponent<EnemyController>();
         if (enemyCtrl == null)
         {
-            Debug.LogError("[ÇÊµå »ı¼º] EnemyController°¡ ¾øÀ½");
+            Debug.LogError("[í•„ë“œ ìƒì„±] EnemyControllerê°€ ì—†ìŒ");
             return;
         }
 
-        Debug.Log($"[ÇÊµå »ı¼º] Àû Áø¿µ = {enemyCtrl.enemySide}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] ì  ì§„ì˜ = {enemyCtrl.enemySide}");
 
         Debug.Log(
-            $"[ÇÊµå »ı¼º] local ÁÂÇ¥ = ({pkt.localX}, {pkt.localY})"
+            $"[í•„ë“œ ìƒì„±] local ì¢Œí‘œ = ({pkt.localX}, {pkt.localY})"
         );
 
         Vector3 worldPos;
@@ -472,7 +534,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log(
-            $"[ÇÊµå »ı¼º] ¿ùµå ÁÂÇ¥ = {worldPos}"
+            $"[í•„ë“œ ìƒì„±] ì›”ë“œ ì¢Œí‘œ = {worldPos}"
         );
 
         GameObject obj = Instantiate(
@@ -481,17 +543,17 @@ public class GameManager : MonoBehaviour
             Quaternion.identity
         );
 
-        Debug.Log($"[ÇÊµå »ı¼º] ÇÁ¸®ÆÕ ÀÎ½ºÅÏ½º »ı¼ºµÊ = {obj.name}");
+        Debug.Log($"[í•„ë“œ ìƒì„±] í”„ë¦¬íŒ¹ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±ë¨ = {obj.name}");
 
         MagicProjectile proj = obj.GetComponent<MagicProjectile>();
         if (proj == null)
         {
-            Debug.LogError("[ÇÊµå »ı¼º] MagicProjectile ÄÄÆ÷³ÍÆ®°¡ ¾øÀ½");
+            Debug.LogError("[í•„ë“œ ìƒì„±] MagicProjectile ì»´í¬ë„ŒíŠ¸ê°€ ì—†ìŒ");
             Destroy(obj);
             return;
         }
 
-        Debug.Log("[ÇÊµå »ı¼º] MagicProjectile Init È£Ãâ");
+        Debug.Log("[í•„ë“œ ìƒì„±] MagicProjectile Init í˜¸ì¶œ");
 
         proj.Init(
             caster: enemy.gameObject,
@@ -507,7 +569,7 @@ public class GameManager : MonoBehaviour
             }
         );
 
-        Debug.Log("[ÇÊµå »ı¼º] ÇÊµå »ı¼º ¿Ï·á");
+        Debug.Log("[í•„ë“œ ìƒì„±] í•„ë“œ ìƒì„± ì™„ë£Œ");
     }
 
     public void OnMeteorArrived(int cardId, Vector2 worldPos, GameObject casterObj)
@@ -521,7 +583,7 @@ public class GameManager : MonoBehaviour
             return;
 
         GameObject fieldObj = Instantiate(
-        fieldCard.playerPrefab,   // ¡ç MeteorStrikeField ÇÁ¸®ÆÕ
+        fieldCard.playerPrefab,   // â† MeteorStrikeField í”„ë¦¬íŒ¹
         worldPos,
         Quaternion.identity
     );
@@ -574,5 +636,31 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void OnInvisibility(byte[] body)
+    {
+        PKT_STATUS_INVISIBILITY_STRUCT pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_STATUS_INVISIBILITY_STRUCT>(body);
+
+        string id = pkt.userId.TrimEnd('\0', ' ');
+        float duration = pkt.durationMs / 1000f;
+
+        // ë‚´ ìºë¦­í„°
+        if (id == MyUserId)
+        {
+            MyCaster.GetComponent<CharacterController2D>()
+                    ?.ApplyInvisibility(duration);
+            return;
+        }
+
+        // ìƒëŒ€ ìºë¦­í„°
+        var enemy =
+            FindObjectsByType<CharacterIdentity>(FindObjectsSortMode.None)
+            .FirstOrDefault(x => x.UserId == id);
+
+        enemy?.GetComponent<EnemyController>()
+              ?.ApplyInvisibility(duration);
+    }
+
 
 }

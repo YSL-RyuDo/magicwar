@@ -269,3 +269,18 @@ public struct PKT_REMOVE_PROJECTILE
 
     public int cardId;
 }
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_CAST_SELF_MAGIC
+{
+    public int cardId;   // 7 (Invisibility)
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_STATUS_INVISIBILITY_STRUCT
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+
+    public int durationMs; // 0이면 해제
+}

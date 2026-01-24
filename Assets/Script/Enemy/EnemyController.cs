@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class EnemyController : MonoBehaviour
     private Vector3 prevWorldPos;
     private bool hasTarget = false;
     private bool isDead = false;
+
+    // 상태
+    private Coroutine invisRoutine;
 
     private void Start()
     {
@@ -44,7 +48,6 @@ public class EnemyController : MonoBehaviour
             Time.deltaTime * smoothSpeed
         );
 
-        // ───────── 방향 판단 (월드 이동 기준) ─────────
         float dx = transform.position.x - prevWorldPos.x;
 
         if (Mathf.Abs(dx) > 0.001f)
@@ -117,7 +120,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
     public void Die()
     {
         if (isDead)
@@ -131,5 +133,33 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("isRun", false);
             animator.SetTrigger("die");
         }
+    }
+
+    public void ApplyInvisibility(float duration)
+    {
+        if (invisRoutine != null)
+            StopCoroutine(invisRoutine);
+
+        invisRoutine = StartCoroutine(InvisibilityRoutine(duration));
+    }
+
+    private IEnumerator InvisibilityRoutine(float duration)
+    {
+        SetInvisible(true);
+
+        if (duration > 0f)
+            yield return new WaitForSeconds(duration);
+
+        SetInvisible(false);
+        invisRoutine = null;
+    }
+
+    private void SetInvisible(bool invisible)
+    {
+        if (visualRoot == null)
+            return;
+
+        foreach (var sr in visualRoot.GetComponentsInChildren<SpriteRenderer>())
+            sr.enabled = !invisible;
     }
 }

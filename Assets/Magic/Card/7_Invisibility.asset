@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Invisibility
   cardImage: {fileID: 1479212587552436098, guid: 2deb7b496e849164b8710f73a92a7ca8, type: 3}
   description: Invisibility
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  playerPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 0}
   effects:
-  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}
+  - {fileID: 11400000, guid: aab6b7e6571448a4cba0083674cf786e, type: 2}
