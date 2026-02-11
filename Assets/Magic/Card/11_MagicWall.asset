@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: MagicWall
   cardImage: {fileID: -5356574185940491189, guid: ba5e355c5dd7eec4cb5afe1b9a363754, type: 3}
   description: MagicWall
-  playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
-  enemyPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}
+  playerPrefab: {fileID: 2244091132412408480, guid: 3ba375018d106b54eb603fff790c982e, type: 3}
+  enemyPrefab: {fileID: 2244091132412408480, guid: 3ba375018d106b54eb603fff790c982e, type: 3}
   effects:
-  - {fileID: 11400000, guid: 075ca1cd4d3458b4ba27e15a88384c92, type: 2}
+  - {fileID: 11400000, guid: e9d57df5ff74a7747bc0a1b5dad5aaf3, type: 2}

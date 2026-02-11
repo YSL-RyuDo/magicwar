@@ -48,7 +48,7 @@ public class MeteorProjectile : MagicProjectile
 
         if (hit.UserId == GameManager.Instance.OpponentUserId)
         {
-            hit.GetComponent<EnemyController>()?.PlayHurt();
+            //hit.GetComponent<EnemyController>()?.PlayHurt();
         }
 
         DamageRequestPacket pkt = new DamageRequestPacket

@@ -116,7 +116,7 @@ public class GameUIController : MonoBehaviour
             CharacterController2D controller =
                 FindFirstObjectByType<CharacterController2D>();
 
-            controller?.PlayHurt();
+            //controller?.PlayHurt();
         }
 
         // UI °»½Å

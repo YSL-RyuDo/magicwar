@@ -13,7 +13,8 @@ public class DamageEffect : MagicEffect
 
         if (identity.UserId == GameManager.Instance.OpponentUserId)
         {
-            target.GetComponent<EnemyController>()?.PlayHurt();
+            if (!identity.HasMagicBarrier)
+                target.GetComponent<EnemyController>()?.PlayHurt();
         }
 
         DamageRequestPacket pkt = new DamageRequestPacket

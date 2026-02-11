@@ -23,7 +23,6 @@ public class CharacterController2D : MonoBehaviour
     private bool isMoving;
     private bool isDead = false;
     private bool isStunned = false;
-    private bool isInvisible = false;
 
     private Rigidbody2D rb;
     private Animator anim;

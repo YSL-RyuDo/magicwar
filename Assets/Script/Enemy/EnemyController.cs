@@ -41,7 +41,6 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        // 이동
         transform.position = Vector3.Lerp(
             transform.position,
             targetPos,
@@ -66,27 +65,29 @@ public class EnemyController : MonoBehaviour
         prevWorldPos = transform.position;
     }
 
-    // 서버에서 받은 "필드 기준 로컬 좌표"
     public void SetPosition(float localX, float localY)
     {
         if (isDead)
             return;
 
         Vector3 local = new Vector3(localX, localY, 0f);
+        Vector3 worldPos;
 
         if (enemySide == TeamSide.Top)
         {
             local.x = -local.x;
             local.y = -local.y;
-            targetPos = topAnchor.position + local;
+            worldPos = topAnchor.position + local;
         }
         else
         {
-            targetPos = bottomAnchor.position + local;
+            worldPos = bottomAnchor.position + local;
         }
 
+        targetPos = worldPos;
         hasTarget = true;
     }
+
 
     private void SetRun(bool isRun)
     {
@@ -162,4 +163,56 @@ public class EnemyController : MonoBehaviour
         foreach (var sr in visualRoot.GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = !invisible;
     }
+
+    public void Teleport(float localX, float localY)
+    {
+        if (isDead)
+            return;
+
+        Vector3 local = new Vector3(localX, localY, 0f);
+        Vector3 worldPos;
+
+        if (enemySide == TeamSide.Top)
+        {
+            local.x = -local.x;
+            local.y = -local.y;
+            worldPos = topAnchor.position + local;
+        }
+        else
+        {
+            worldPos = bottomAnchor.position + local;
+        }
+
+        hasTarget = false;
+        targetPos = worldPos;
+        prevWorldPos = worldPos;
+
+        transform.position = worldPos;
+        SetRun(false);
+    }
+
+    public void ForceSetPosition(float localX, float localY)
+    {
+        Vector3 local = new Vector3(localX, localY, 0f);
+        Vector3 worldPos;
+
+        if (enemySide == TeamSide.Top)
+        {
+            local.x = -local.x;
+            local.y = -local.y;
+            worldPos = topAnchor.position + local;
+        }
+        else
+        {
+            worldPos = bottomAnchor.position + local;
+        }
+
+        transform.position = worldPos;
+        targetPos = worldPos;
+        prevWorldPos = worldPos;
+        hasTarget = false;
+
+        SetRun(false);
+    }
+
 }

@@ -21,6 +21,7 @@ public class EnemyService : MonoBehaviour
     {
         Debug.Log("[EnemyService] Start - Register Move Packet");
         network.Dispatcher.Register(PacketType.Move, OnEnemyMoveReceived);
+        network.Dispatcher.Register(PacketType.CastBlink, OnEnemyBlinkReceived);
     }
 
     private void OnDestroy()
@@ -29,6 +30,7 @@ public class EnemyService : MonoBehaviour
         if (network != null)
         {
             network.Dispatcher.Unregister(PacketType.Move, OnEnemyMoveReceived);
+            network.Dispatcher.Unregister(PacketType.CastBlink, OnEnemyBlinkReceived);
         }
     }
 
@@ -57,5 +59,20 @@ public class EnemyService : MonoBehaviour
 
         Debug.Log("[EnemyService] Calling EnemyController.SetPosition()");
         enemy.SetPosition(pkt.x, pkt.y);
+    }
+
+    private void OnEnemyBlinkReceived(byte[] body)
+    {
+        int expectedSize = Marshal.SizeOf<PKT_CAST_BLINK>();
+        if (body.Length != expectedSize)
+            return;
+
+        PKT_CAST_BLINK pkt =
+            NetworkConnector.ByteArrayToStructure<PKT_CAST_BLINK>(body);
+
+        if (enemy == null)
+            return;
+
+        enemy.ForceSetPosition(pkt.x, pkt.y);
     }
 }

@@ -284,3 +284,22 @@ public struct PKT_STATUS_INVISIBILITY_STRUCT
 
     public int durationMs; // 0이면 해제
 }
+
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_STATUS_MAGIC_BARRIER_STRUCT
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+
+    public int durationMs;
+}
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PKT_CAST_BLINK
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    public string userId;
+    public float x;
+    public float y;
+}

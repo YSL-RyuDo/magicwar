@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterIdentity : MonoBehaviour
 {
     public string UserId;
+    public bool HasMagicBarrier { get;  set; }
 
     private void Start()
     {
@@ -14,5 +15,10 @@ public class CharacterIdentity : MonoBehaviour
                 GameManager.Instance.RegisterMyCaster(caster);
             }
         }
+    }
+
+    public void SetMagicBarrier(bool value)
+    {
+        HasMagicBarrier = value;
     }
 }

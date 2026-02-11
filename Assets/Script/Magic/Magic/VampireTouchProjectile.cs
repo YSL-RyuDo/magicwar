@@ -24,8 +24,8 @@ public class VampiricTouchProjectile : MagicProjectile
 
         if (target.UserId == GameManager.Instance.OpponentUserId)
         {
-            // 상대방 피격 애니메이션
-            target.GetComponent<EnemyController>()?.PlayHurt();
+            if (!target.HasMagicBarrier)
+                target.GetComponent<EnemyController>()?.PlayHurt();
         }
 
         DamageRequestPacket pkt = new DamageRequestPacket
