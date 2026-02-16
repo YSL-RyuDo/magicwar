@@ -17,4 +17,7 @@ public class CardData : ScriptableObject
 
     [Header("효과 목록")]
     public MagicEffect[] effects;
+
+    [Header("효과음")]
+    public AudioClip audioClip;
 }

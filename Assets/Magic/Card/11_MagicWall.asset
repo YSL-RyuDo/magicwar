@@ -20,3 +20,4 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2244091132412408480, guid: 3ba375018d106b54eb603fff790c982e, type: 3}
   effects:
   - {fileID: 11400000, guid: e9d57df5ff74a7747bc0a1b5dad5aaf3, type: 2}
+  audioClip: {fileID: 8300000, guid: 7559d63d99383c14da0d8c19153c6c76, type: 3}

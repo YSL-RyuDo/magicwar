@@ -19,3 +19,4 @@ MonoBehaviour:
   playerPrefab: {fileID: 5723585102446188786, guid: 2ffa0bdd021de3c44b264a8a49dc4ad0, type: 3}
   enemyPrefab: {fileID: 5723585102446188786, guid: 2ffa0bdd021de3c44b264a8a49dc4ad0, type: 3}
   effects: []
+  audioClip: {fileID: 8300000, guid: 5c1236dd1ef0a8e48863ae20f1ce1000, type: 3}

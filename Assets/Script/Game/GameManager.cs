@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public string MyUserId { get; private set; }
     public string OpponentUserId { get; private set; }
 
+    [SerializeField] private AudioSource bgmSource;
+    [SerializeField] private AudioSource sfxSource;
+
     private NetworkConnector network;
 
     [SerializeField] private CardDatabase cardDB;
@@ -126,6 +129,7 @@ public class GameManager : MonoBehaviour
                 NetworkConnector.StructToBytes(pkt)
             );
 
+            sfxSource.PlayOneShot(card.audioClip);
             StartCooldown(SelectedMagicSlot, stat.cooldown);
             return; // ⭐ 여기서 끝
         }
@@ -166,6 +170,7 @@ public class GameManager : MonoBehaviour
                 NetworkConnector.StructToBytes(pkt)
             );
 
+            sfxSource.PlayOneShot(card.audioClip);
             StartCooldown(SelectedMagicSlot, stat.cooldown);
             return;
         }
@@ -184,6 +189,7 @@ public class GameManager : MonoBehaviour
                 NetworkConnector.StructToBytes(pkt)
             );
 
+            sfxSource.PlayOneShot(card.audioClip);
             StartCooldown(SelectedMagicSlot, stat.cooldown);
             return;
         }
@@ -206,6 +212,7 @@ public class GameManager : MonoBehaviour
                     })
             );
 
+            sfxSource.PlayOneShot(card.audioClip);
             StartCooldown(SelectedMagicSlot, stat.cooldown);
             return;
         }
@@ -255,6 +262,7 @@ public class GameManager : MonoBehaviour
                 NetworkConnector.StructToBytes(pkt)
             );
 
+            sfxSource.PlayOneShot(card.audioClip);
             StartCooldown(SelectedMagicSlot, stat.cooldown);
             return;
         }
@@ -307,6 +315,7 @@ public class GameManager : MonoBehaviour
             );
         }
 
+        sfxSource.PlayOneShot(card.audioClip);
         StartCooldown(SelectedMagicSlot, stat.cooldown);
     }
 
