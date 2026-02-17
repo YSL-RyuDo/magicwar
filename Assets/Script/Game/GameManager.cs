@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
 
+    [SerializeField] private AudioClip victoryCilp;
+    [SerializeField] private AudioClip defeatCilp;
+
     private NetworkConnector network;
 
     [SerializeField] private CardDatabase cardDB;
@@ -553,11 +556,13 @@ public class GameManager : MonoBehaviour
 
     private void OnVictory(byte[] body)
     {
+        sfxSource.PlayOneShot(victoryCilp);
         GameUIController.Instance?.ShowVictoryUI();
     }
 
     private void OnDefeat(byte[] body)
     {
+        sfxSource.PlayOneShot(defeatCilp);
         GameUIController.Instance?.ShowDefeatUI();
     }
 

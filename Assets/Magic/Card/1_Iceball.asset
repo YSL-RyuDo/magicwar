@@ -15,7 +15,9 @@ MonoBehaviour:
   ID: 1
   cardName: IceBall
   cardImage: {fileID: 4317225593958605249, guid: 52e587786caadf6488e27235ef327551, type: 3}
-  description: IceBall
+  description: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uC544\uC774\uC2A4 \uBCFC\uC744 \uBC1C\uC0AC\uD558\uB294
+    \uACF5\uACA9\n\uB9DE\uC740 \uB300\uC0C1\uC740 \uC774\uB3D9 \uC18D\uB3C4\uAC00
+    \uB290\uB824\uC9D0"
   playerPrefab: {fileID: 2568609391009725525, guid: 6c02c3b6b13dd4740ae4da34c4e5e82c, type: 3}
   enemyPrefab: {fileID: 2568609391009725525, guid: 6c02c3b6b13dd4740ae4da34c4e5e82c, type: 3}
   effects:

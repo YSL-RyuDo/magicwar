@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 10
   cardName: Blink
   cardImage: {fileID: -9092828279365600596, guid: 3c6efdcf3f2cd3540bcbc843e04a0b79, type: 3}
-  description: Blink
+  description: "\uC21C\uAC04 \uC774\uB3D9"
   playerPrefab: {fileID: 5141784839394855845, guid: ea5ff771bf550c94ba2fd4a373bcaab3, type: 3}
   enemyPrefab: {fileID: 5141784839394855845, guid: ea5ff771bf550c94ba2fd4a373bcaab3, type: 3}
   effects:

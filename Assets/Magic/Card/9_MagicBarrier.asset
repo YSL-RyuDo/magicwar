@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 9
   cardName: MagicBarrier
   cardImage: {fileID: -7910127128901405170, guid: e206a9e589859d6428fe4faef2515dba, type: 3}
-  description: MagicBarrier
+  description: "\uB9C8\uBC95 \uACF5\uACA9\uC73C\uB85C \uBD80\uD130 1\uD68C \uBCF4\uD638"
   playerPrefab: {fileID: 5138311062335981452, guid: a2787992e6451ec4989665914bc8cec9, type: 3}
   enemyPrefab: {fileID: 5138311062335981452, guid: a2787992e6451ec4989665914bc8cec9, type: 3}
   effects:

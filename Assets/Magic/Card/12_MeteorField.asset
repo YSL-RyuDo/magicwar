@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 12
   cardName: MeteorField
   cardImage: {fileID: 21300000, guid: 126ff315372e6cf4cbcaf16d67b2c9aa, type: 3}
-  description: MagicWall
+  description: "\uBA54\uD14C\uC624 \uD544\uB4DC"
   playerPrefab: {fileID: 110001265717703090, guid: fdbc75ab447b0514db160976e85189a9, type: 3}
   enemyPrefab: {fileID: 110001265717703090, guid: fdbc75ab447b0514db160976e85189a9, type: 3}
   effects:

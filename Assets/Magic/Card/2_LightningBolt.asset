@@ -15,7 +15,9 @@ MonoBehaviour:
   ID: 2
   cardName: LightningBolt
   cardImage: {fileID: -6278663978556736651, guid: 97a1461a21d71724da4326b12f09ec8c, type: 3}
-  description: LightningBolt
+  description: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uB77C\uC774\uD2B8\uB2DD \uBCFC\uC744
+    \uBC1C\uC0AC\uD558\uB294 \uACF5\uACA9\n\uB9DE\uC740 \uB300\uC0C1\uC740 \uC7A0\uC2DC\uB3D9\uC548
+    \uC774\uB3D9\uC774 \uBD88\uAC00\uD568"
   playerPrefab: {fileID: 7144124580649679034, guid: dbb4c23dac587e4468b85850614f79d0, type: 3}
   enemyPrefab: {fileID: 7144124580649679034, guid: dbb4c23dac587e4468b85850614f79d0, type: 3}
   effects:
