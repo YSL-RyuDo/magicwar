@@ -15,19 +15,20 @@ public class SoundSystem : MonoBehaviour
 
     void Awake()
     {
-        // --- 싱글톤 및 파괴 방지 설정 ---
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬이 바뀌어도 파괴되지 않음
+            DontDestroyOnLoad(gameObject);
+
             audioSource = GetComponent<AudioSource>();
         }
         else
         {
-            Destroy(gameObject); // 이미 존재하면 새로 생긴 것은 삭제
+            Destroy(gameObject);
             return;
         }
     }
+
 
     void OnEnable()
     {

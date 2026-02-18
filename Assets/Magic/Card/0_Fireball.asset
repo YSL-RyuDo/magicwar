@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   cardName: Fireball
-  cardImage: {fileID: -8262534425414574923, guid: 6447676e1cccfaa44950127eb1c319a7, type: 3}
+  cardImage: {fileID: 5353841184698615464, guid: 873157c9c30a25a419474d97ae84c796, type: 3}
   description: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uD30C\uC774\uC5B4 \uBCFC\uC744 \uBC1C\uC0AC\uD558\uB294
     \uACF5\uACA9"
   playerPrefab: {fileID: 1725077883223948421, guid: e051f7ed1fcf837408fd7cd806387f7e, type: 3}

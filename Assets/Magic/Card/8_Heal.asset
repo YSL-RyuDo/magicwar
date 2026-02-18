@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 8
   cardName: Heal
-  cardImage: {fileID: -2793494068267466581, guid: 139f11fd9e23bcb4aa79466c58d764aa, type: 3}
+  cardImage: {fileID: -1049461823314036041, guid: 216aa6a291ef3a048af475b8dd5ffbb7, type: 3}
   description: "\uCCB4\uB825 \uD68C\uBCF5"
   playerPrefab: {fileID: 1282694417286988083, guid: 9f2af1037c04a7d4296d43fcce2c8454, type: 3}
   enemyPrefab: {fileID: 1282694417286988083, guid: 9f2af1037c04a7d4296d43fcce2c8454, type: 3}

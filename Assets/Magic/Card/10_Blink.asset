@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 10
   cardName: Blink
-  cardImage: {fileID: -9092828279365600596, guid: 3c6efdcf3f2cd3540bcbc843e04a0b79, type: 3}
+  cardImage: {fileID: -8408680621071802262, guid: d56184d9d9e34dd47b0bff592def6458, type: 3}
   description: "\uC21C\uAC04 \uC774\uB3D9"
   playerPrefab: {fileID: 5141784839394855845, guid: ea5ff771bf550c94ba2fd4a373bcaab3, type: 3}
   enemyPrefab: {fileID: 5141784839394855845, guid: ea5ff771bf550c94ba2fd4a373bcaab3, type: 3}

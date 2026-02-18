@@ -148,14 +148,14 @@ public class SettingSystem : MonoBehaviour
             NetworkConnector.ByteArrayToStructure<PKT_RES_MAGIC_DETAIL>(data);
 
         magicNameText.text = pkt.name;
-        magicAttackText.text = $"Attack: {pkt.attack}";
-        magicCooldownText.text = $"Cooldown: {pkt.cooldown}";
-        magicCostText.text = $"Cost: {pkt.cost}";
+        magicAttackText.text = pkt.attack.ToString();
+        magicCooldownText.text = pkt.cooldown.ToString();
+        magicCostText.text = pkt.cost.ToString();
         magicEffectTypeText.text = pkt.effectType;
-        magicSpeedText.text = $"Speed: {pkt.speed}";
-        magicRadiusText.text = $"Radius: {pkt.radius}";
-        magicDurationText.text = $"Duration: {pkt.duration}";
-        magicAmountText.text = $"Amount: {pkt.amount}";
+        magicSpeedText.text = pkt.speed.ToString();
+        magicRadiusText.text = pkt.radius.ToString();
+        magicDurationText.text = pkt.duration.ToString();
+        magicAmountText.text = pkt.amount.ToString();
 
         CardData card = System.Array.Find(cardDatabase.cards, c => c.ID == pkt.id);
         if (card != null)

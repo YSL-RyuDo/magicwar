@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 6
   cardName: VampiricTouch
-  cardImage: {fileID: -2884849627004866171, guid: 26cb8423af1fce345ae73bdc1de0e05a, type: 3}
+  cardImage: {fileID: -5687666349546342197, guid: 029cc2e9092c2ba42998d2b8df55af6d, type: 3}
   description: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uD22C\uC0AC\uCCB4\uB97C \uBC1C\uC0AC\n\uC801\uC911
     \uC2DC \uCCB4\uB825 \uD68C\uBCF5"
   playerPrefab: {fileID: 8296846179543597693, guid: e80a46f4d54083f46acc74edcc200eec, type: 3}

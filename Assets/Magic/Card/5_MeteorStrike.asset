@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 5
   cardName: MeteorStrike
-  cardImage: {fileID: -4888399323542012093, guid: dfc216dc55f788f4e8f46acc6cbe6799, type: 3}
+  cardImage: {fileID: -925345978958199149, guid: b6367ac31a6ee3d4dbb5fc157c2633a8, type: 3}
   description: "\uBA54\uD14C\uC624\uB97C \uBC1C\uC0AC\n\uCDA9\uB3CC \uC2DC \uBA54\uD14C\uC624
     \uD544\uB4DC \uC804\uAC1C"
   playerPrefab: {fileID: 8789084979750176804, guid: 1bc9aac2dec5dd141a0e54137fd9cc33, type: 3}

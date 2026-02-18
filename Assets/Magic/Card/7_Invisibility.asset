@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 7
   cardName: Invisibility
-  cardImage: {fileID: 1479212587552436098, guid: 2deb7b496e849164b8710f73a92a7ca8, type: 3}
+  cardImage: {fileID: 2036037179587684401, guid: 4d0626cfbd95c254f8cdf29d7bcde4d6, type: 3}
   description: "\uC7A0\uC2DC\uB3D9\uC548 \uC740\uC2E0"
   playerPrefab: {fileID: 0}
   enemyPrefab: {fileID: 0}
