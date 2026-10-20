@@ -1,20 +1,41 @@
 # Arcana Duel
 
-[English](README.md) · [Korean](README.ko.md) · [Japanese](README.ja.md)
+[English](README.md), [Korean](README.ko.md), [Japanese](README.ja.md)
 
 プログラマー1名とグラフィック担当1名で制作した、マルチプレイヤー魔法バトルゲームです。
 
-**C++ · IOCP · DB worker · Unity** · 開発記録
+| プロジェクト情報 | 内容 |
+|---|---|
+| 開発状況 | 開発記録 |
+| 使用技術 | C++, IOCP, DB worker, Unity |
+| 期間とチーム構成 | 2025.08 ~ 2026.02, 2名：プログラマー1名、グラフィック1名 |
+| 担当 | プログラミング担当：C++サーバー・Unityゲーム連携 |
 
-**2025.08 - 2026.02 · 2名：プログラマー1名、グラフィック1名**
+[開発事例を見る](https://ysl-ryudo.github.io/ja/work/magicwar/), [Portfolio](https://ysl-ryudo.github.io/ja/)
 
-プログラミング担当：C++サーバー・Unityゲーム連携
+[![Arcana Duel](https://i.ytimg.com/vi/MJo1y09kzd4/hqdefault.jpg)](https://www.youtube.com/watch?v=MJo1y09kzd4)
 
-[開発事例を見る](https://ysl-ryudo.github.io/ja/work/magicwar/) · [Portfolio](https://ysl-ryudo.github.io/ja/)
+[Arcana Duel](https://www.youtube.com/watch?v=MJo1y09kzd4), [Early development demo](https://www.youtube.com/watch?v=8sKpA2H9Ib4)
 
-[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver) (非公開・アクセス権が必要) · [magicwar](https://github.com/YSL-RyuDo/magicwar) (非公開・アクセス権が必要)
+## 担当した内容
 
-## システム別の担当内容
+ゲーム・ネットワーク連携とクライアント側の魔法戦闘システムを担当しました。
+
+ダメージ・回復、瞬間移動、透明化、バリア、壁、スロー効果が実装され、対応するサービスは別サーバーで処理します。
+
+ソース履歴に記録されたオーディオ・UIの貢献と外部素材のクレジットを維持しています。
+
+## 貢献の根拠
+
+[Development history / 개발 이력 / 開発履歴](https://github.com/YSL-RyuDo/magicwar/commits/main/?author=YSL-RyuDo)
+
+コミットは記載した変更の根拠であり、貢献率の点数ではありません。外部素材・チームメンバーの貢献は区別します。
+
+## 実装と設計
+
+マルチプレイヤー魔法戦闘では送受信、再利用する接続リソース、DBを使うゲームサービスが共存します。サーバー内の責務の分け方を示す事例です。
+
+IOCPワーカー、セッション・バッファー・Overlappedプール、独立したDBワーカーを構成しました。魔法・クールダウン、試合・プロフィール・ランク、Unityとの連携を担当しました。
 
 | 領域 | 実装 |
 |---|---|
@@ -23,31 +44,20 @@
 | DB処理 | 専用DBワーカーでデータベース要求を処理 |
 | ゲーム連携 | 魔法・クールダウン・試合・プロフィール・ランクとUnityを連携 |
 
-## 開発デモ動画
-
-- [Arcana Duel](https://www.youtube.com/watch?v=MJo1y09kzd4)
-- [Early development demo](https://www.youtube.com/watch?v=8sKpA2H9Ib4)
-
-## 担当した内容
-
-- ゲーム・ネットワーク連携とクライアント側の魔法戦闘システムを担当しました。
-- ダメージ・回復、瞬間移動、透明化、バリア、壁、スロー効果が実装され、対応するサービスは別サーバーで処理します。
-- ソース履歴に記録されたオーディオ・UIの貢献と外部素材のクレジットを維持しています。
-
-## 貢献の根拠
-
-- [Development history / 개발 이력 / 開発履歴](https://github.com/YSL-RyuDo/magicwar/commits/main/?author=YSL-RyuDo)
-
-コミットは記載した変更の根拠であり、貢献率の点数ではありません。外部素材・チームメンバーの貢献は区別します。
-
 ## 実行・コードの確認
 
 [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)記載のUnity版で開いてください。パッケージロックとシリアライズ済み素材を維持し、Unityを開く前に対象ブランチを選んでください。
 
-- Unity scene: [Assets/Scenes/LoginScene.unity](Assets/Scenes/LoginScene.unity)
+Unity scene: [Assets/Scenes/LoginScene.unity](Assets/Scenes/LoginScene.unity)
 
 [magicwarserver](https://github.com/YSL-RyuDo/magicwarserver)
 
 ## 開発・検証範囲
 
 過去の開発状態を整理しています。実装範囲の説明であり、新たなプレイ検証や商用処理容量の結果ではありません。クライアントとサーバーの版を合わせてください。
+
+## 関連リポジトリ
+
+[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver), 非公開・アクセス権が必要
+
+[magicwar](https://github.com/YSL-RyuDo/magicwar), 非公開・アクセス権が必要
