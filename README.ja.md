@@ -1,10 +1,14 @@
-# Magicwar — Multiplayer Magic Combat
+# Arcana Duel — Multiplayer Magic Combat
 
 [English](README.md) · [Korean](README.ko.md) · [Japanese](README.ja.md)
 
 **C++ · IOCP · DB worker · Unity** · 開発記録
 
 [開発事例を見る](https://ysl-ryudo.github.io/ja/work/magicwar/) · [Portfolio](https://ysl-ryudo.github.io/ja/)
+
+**2025.08 - 2026.02 · 2名：プログラマー1名、グラフィック1名**
+
+プログラミング担当：C++サーバー・Unityゲーム連携
 
 
 C++ IOCPサーバーと連携するUnityマルチプレイヤー魔法戦闘プロジェクトです。
@@ -29,9 +33,10 @@ flowchart LR
 
 ### 開発デモ動画
 
-[![Magicwar — Magicwar demo](https://i.ytimg.com/vi/8sKpA2H9Ib4/hqdefault.jpg)](https://www.youtube.com/watch?v=8sKpA2H9Ib4)
+[![Arcana Duel — Arcana Duel](https://i.ytimg.com/vi/MJo1y09kzd4/hqdefault.jpg)](https://www.youtube.com/watch?v=MJo1y09kzd4)
 
-- [Magicwar demo](https://www.youtube.com/watch?v=8sKpA2H9Ib4)
+- [Arcana Duel](https://www.youtube.com/watch?v=MJo1y09kzd4)
+- [Early development demo](https://www.youtube.com/watch?v=8sKpA2H9Ib4)
 
 撮影時点のプロジェクトデモです。ゲーム内での担当作業は以下の担当範囲で示します。
 
@@ -39,7 +44,7 @@ flowchart LR
 
 - ゲーム・ネットワーク連携とクライアント側の魔法戦闘システムを担当しました。
 - ダメージ・回復、瞬間移動、透明化、バリア、壁、スロー効果が実装され、対応するサービスは別サーバーで処理します。
-- オーディオ・UIなど他の開発者による貢献があります。リポジトリ所有者がすべての素材・コードを単独制作したという意味ではありません。
+- ソース履歴に記録されたオーディオ・UIの貢献と外部素材のクレジットを維持しています。
 
 ## 貢献の根拠
 
