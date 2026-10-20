@@ -63,13 +63,13 @@ Implemented local movement and animation with slow, stun and casting restriction
 
 Implemented health and spell-cooldown UI, victory/defeat display and return to the lobby. These screens consume combat and result state; the server also maintains match, profile and rank-related processing.
 
-[GameUIController.cs (main)](https://github.com/YSL-RyuDo/magicwar/blob/20cff216e385494429a4629127ef85f8732a82db/Assets/Script/Game/GameUIController.cs), [My change 2f2abc5](https://github.com/YSL-RyuDo/magicwar/commit/2f2abc5397d4bc8981d862c7a6e8f117cb11138a), [MatchManager.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/MatchManager.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381)
+[GameUIController.cs (main)](https://github.com/YSL-RyuDo/magicwar/blob/20cff216e385494429a4629127ef85f8732a82db/Assets/Script/Game/GameUIController.cs), [My change 2f2abc5](https://github.com/YSL-RyuDo/magicwar/commit/2f2abc5397d4bc8981d862c7a6e8f117cb11138a), [MatchManager.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/MatchManager.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5)
 
 ### Network transport and persistence
 
 Built the IOCP server's message framing, session resources and separate database worker. The detailed notes explain why TCP message reconstruction and storage waiting are separate concerns from the gameplay code that consumes their results.
 
-[PacketParser.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/PacketParser.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381), [DBWorker.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/DBWorker.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381)
+[PacketParser.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/PacketParser.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5), [DBWorker.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/DBWorker.cpp), [My change 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5)
 
 ## Contribution evidence
 
@@ -105,7 +105,7 @@ Executing DB calls inline avoids another queue but couples storage wait to netwo
 
 One database worker simplifies execution order but can become a bottleneck as requests accumulate. Queue capacity, cancellation and draining pending work during shutdown need explicit policies.
 
-[magicwarserver/DBWorker.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/DBWorker.cpp), [magicwarserver/MatchManager.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/MatchManager.cpp)
+[magicwarserver/DBWorker.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/DBWorker.cpp), [magicwarserver/MatchManager.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/MatchManager.cpp)
 
 ### A receive completion is not a game message
 
@@ -125,7 +125,7 @@ Delimiter-based messages are easy to inspect but require escaping rules for arbi
 
 Framing requires length and capacity checks and careful object lifetimes. Important cases include split headers/bodies, several messages in one receive and disconnects while I/O is pending.
 
-[magicwarserver/PacketParser.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/PacketParser.cpp), [magicwarserver/IOCP_Recv.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/IOCP_Recv.cpp)
+[magicwarserver/PacketParser.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/PacketParser.cpp), [magicwarserver/IOCP_Recv.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/IOCP_Recv.cpp)
 
 ### A spell needs both content and runtime values
 
@@ -173,10 +173,10 @@ Open the project with the Unity version recorded in [ProjectVersion.txt](Project
 
 Unity scene: [Assets/Scenes/LoginScene.unity](Assets/Scenes/LoginScene.unity)
 
-[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver)
+[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver-public)
 
 ## Related repositories
 
-[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver), Private, access required
+[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver-public), Public source
 
-[magicwar](https://github.com/YSL-RyuDo/magicwar), Private, access required
+[magicwar](https://github.com/YSL-RyuDo/magicwar), Public repository

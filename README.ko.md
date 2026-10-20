@@ -63,13 +63,13 @@ Unity에서 덱 편성, 캐릭터 조작, 마법 시전, 전투 UI와 경기 결
 
 체력과 마법 쿨다운 UI, 승패 표시와 로비 복귀를 구현했습니다. 전투와 결과 상태를 화면에 반영하고 서버의 경기, 프로필과 랭크 처리까지 연결했습니다.
 
-[GameUIController.cs (main)](https://github.com/YSL-RyuDo/magicwar/blob/20cff216e385494429a4629127ef85f8732a82db/Assets/Script/Game/GameUIController.cs), [내 변경 2f2abc5](https://github.com/YSL-RyuDo/magicwar/commit/2f2abc5397d4bc8981d862c7a6e8f117cb11138a), [MatchManager.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/MatchManager.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381)
+[GameUIController.cs (main)](https://github.com/YSL-RyuDo/magicwar/blob/20cff216e385494429a4629127ef85f8732a82db/Assets/Script/Game/GameUIController.cs), [내 변경 2f2abc5](https://github.com/YSL-RyuDo/magicwar/commit/2f2abc5397d4bc8981d862c7a6e8f117cb11138a), [MatchManager.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/MatchManager.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5)
 
 ### 통신 처리와 저장
 
 IOCP 서버의 메시지 경계 복원, 세션 자원과 별도 DB 작업자를 구현했습니다. 아래 설명에서는 TCP 메시지를 복원하는 일과 저장을 기다리는 일을 결과를 사용하는 게임 코드와 왜 분리하는지 다룹니다.
 
-[PacketParser.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/PacketParser.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381), [DBWorker.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver/blob/54d5e47c5121c31c945aaec206d7e5d4644c9789/projectMagicWar/DBWorker.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver/commit/5007ff1c1c2f0ed204843307d3b3a9c7b8091381)
+[PacketParser.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/PacketParser.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5), [DBWorker.cpp (main)](https://github.com/YSL-RyuDo/magicwarserver-public/blob/e45825a76f6160e1e362546cb2fa09b44e4fdfd3/projectMagicWar/DBWorker.cpp), [내 변경 5007ff1](https://github.com/YSL-RyuDo/magicwarserver-public/commit/010868f1cce4bae4a9955d03415f1c2f2d77fca5)
 
 ## 기여 근거
 
@@ -105,7 +105,7 @@ DB를 즉시 호출하면 큐가 필요 없지만 저장 대기가 네트워크 
 
 DB 작업자 하나로 실행 순서를 단순하게 만들지만 요청이 쌓이면 병목이 됩니다. 큐 용량과 취소, 종료 시 남은 작업을 처리하는 정책을 별도로 정해야 합니다.
 
-[magicwarserver/DBWorker.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/DBWorker.cpp), [magicwarserver/MatchManager.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/MatchManager.cpp)
+[magicwarserver/DBWorker.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/DBWorker.cpp), [magicwarserver/MatchManager.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/MatchManager.cpp)
 
 ### 수신 한 번을 패킷 하나로 취급하지 않는 이유
 
@@ -125,7 +125,7 @@ TCP는 순서 있는 바이트 스트림이므로 송신 한 번과 수신 한 �
 
 메시지 경계를 복원하려면 길이와 용량 검사, 객체 수명 관리가 필요합니다. 헤더와 본문이 나뉘어 오는 경우, 한 수신에 여러 메시지가 들어오는 경우와 I/O 대기 중 연결 종료를 처리해야 합니다.
 
-[magicwarserver/PacketParser.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/PacketParser.cpp), [magicwarserver/IOCP_Recv.cpp](https://github.com/YSL-RyuDo/magicwarserver/blob/8089751ae5136876d6fe133fdb980ef24c97684c/projectMagicWar/IOCP_Recv.cpp)
+[magicwarserver/PacketParser.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/PacketParser.cpp), [magicwarserver/IOCP_Recv.cpp](https://github.com/YSL-RyuDo/magicwarserver-public/blob/c38570bda4b1eb81ad7b47a872ff369b6121073d/projectMagicWar/IOCP_Recv.cpp)
 
 ### 마법의 표시 정보와 전투 수치를 나눈 이유
 
@@ -173,10 +173,10 @@ SettingSystem은 슬롯을 고르는 동안 교체할 카드 ID를 임시로 보
 
 Unity scene: [Assets/Scenes/LoginScene.unity](Assets/Scenes/LoginScene.unity)
 
-[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver)
+[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver-public)
 
 ## 관련 저장소
 
-[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver), 비공개, 접근 권한 필요
+[magicwarserver](https://github.com/YSL-RyuDo/magicwarserver-public), 공개 소스
 
-[magicwar](https://github.com/YSL-RyuDo/magicwar), 비공개, 접근 권한 필요
+[magicwar](https://github.com/YSL-RyuDo/magicwar), 공개 저장소
